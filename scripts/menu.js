@@ -19,3 +19,15 @@ function closeSidebar()
     sidebar.classList.remove('sidebar-open');
     overlay.classList.remove('overlay-show');
 }
+
+
+/* CLICK OUTSIDE */
+document.addEventListener('click', (event) =>
+{
+    const clickInside = sidebar.contains(event.target) || openButton.contains(event.target);
+
+    if (!clickInside)
+    {
+        closeSidebar();
+    }
+})

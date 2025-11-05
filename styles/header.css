@@ -1,5 +1,6 @@
 header
 {
+    min-height: var(--menu-size);
     position: fixed;
     top: 0;
     right: 0;
@@ -12,6 +13,8 @@ header
 
     background-color: var(--primary-color);
     padding: 1rem 5%;
+
+    will-change: opacity;
 }
 .overlay
 {
@@ -23,12 +26,13 @@ header
     z-index: 998;
     background-color: hsla(0, 0%, 0%, 0.1);
 
-    visibility: hidden;
+    opacity: 0;
     pointer-events: none;
+    transition: opacity 0.8s ease;
 }
 .overlay-show
 {
-    visibility: visible;
+    opacity: 1;
 }
 .logo-area
 {
@@ -59,17 +63,20 @@ header
     box-shadow: 0px 0.2rem 0px var(--bg-color-second);
 
     cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+.hamburguer-menu-icon-wrapper-hidden
+{
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0px 0.2rem 0px var(--bg-color-second);
 }
 .hamburguer-menu-icon
 {
     width: var(--icon-size-large);
     fill: var(--bg-color-first);
 }
-.hamburguer-menu-icon-wrapper-hidden
-{
-    visibility: hidden;
-    pointer-events: none;
-}
+
 
 /* SIDEBAR */
 .sidebar
@@ -87,6 +94,8 @@ header
     align-items: center;
 
     background-color: var(--primary-color);
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
 
     visibility: hidden;
     transform: translateX(100%);
@@ -119,11 +128,12 @@ header
 }
 .sidebar-items-wrapper
 {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: stretch;
+    gap: 1rem;
 }
 .sidebar-item
 {
@@ -135,7 +145,11 @@ header
     gap: 1rem;
 
     padding: 1rem;
-    border: 4px solid pink;
+    background-color: var(--primary-color);
+    border: var(--border);
+    border-color: var(--bg-color-first);
+    border-radius: 1rem;
+    box-shadow: 0px 0.4rem 0px var(--bg-color-second);
 
     cursor: pointer;
 }
@@ -170,8 +184,13 @@ header
 }
 
 /* ACTIVE EFFECTS */
-.hamburguer-menu-icon-wrapper:active, .close-menu-icon-wrapper:active, .lightmode-icon-wrapper:active 
+.hamburguer-menu-icon-wrapper:active, .close-menu-icon-wrapper:active, .lightmode-icon-wrapper:active
 {
     transform: translateY(0.2rem);
     box-shadow: 0px 0px 0px var(--bg-color-second);
+}
+.sidebar-item:active 
+{
+    transform: translateY(0.4rem);
+    box-shadow: 0px 0px 0px var(--bg-color-second);  
 }
