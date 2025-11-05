@@ -1,0 +1,51 @@
+header
+{
+    height: var(--menu-size);
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 998;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    background-color: var(--primary-color);
+    padding: 0 5%;
+}
+.logo-area
+{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+.logo
+{
+    width: var(--icon-size-large);
+    fill: var(--bg-color-first);
+}
+.panela-name
+{
+    font-family: var(--font);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-bold);
+    color: var(--bg-color-first);
+}
+.hamburguer-menu-icon-area
+{
+    padding: 0.1em;
+    background-color: var(--primary-color);
+    border: var(--border);
+    border-color: var(--bg-color-first);
+    border-radius: 16%;
+    box-shadow: 0px 4px 0px var(--bg-color-second);
+
+    cursor: pointer;
+}
+.hamburguer-menu-icon
+{
+    width: var(--icon-size-medium);
+    fill: var(--bg-color-first);
+}
