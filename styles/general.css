@@ -13,6 +13,7 @@ html
 body
 {
     overflow-x: hidden;
+    user-select: none;
     min-height: 100vh;
     padding-top: var(--menu-size);
 }

@@ -3,13 +3,13 @@
 
 :root
 {
-    --menu-size: 10vh;
-    --section-size: 85vh;
+    --menu-size: 12vh;
+    --section-size: 83vh;
     --footer-size: 5vh;
 
-    --icon-size-large: 2.4rem;
-    --icon-size-medium: 2rem;
-    --icon-size-small: 1.8rem;
+    --icon-size-large: 3rem;
+    --icon-size-medium: 2.4rem;
+    --icon-size-small: 2rem;
 
     --buttom-padding: 1.5em 2em;
 
