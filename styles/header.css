@@ -55,6 +55,10 @@ header
 }
 .hamburguer-menu-icon-wrapper
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     padding: 0.1em;
     background-color: var(--primary-color);
     border: var(--border);
@@ -87,12 +91,15 @@ header
     bottom: 0;
     right: 0;
     z-index: 999;
-
+    overflow-y: auto;
+    
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
+    gap: 3rem;
 
+    padding: 6vh 5%;
     background-color: var(--primary-color);
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
@@ -111,6 +118,10 @@ header
 }
 .close-menu-icon-wrapper
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     padding: 0.1em;
     background-color: var(--primary-color);
     border: var(--border);
@@ -122,7 +133,7 @@ header
 }
 .close-menu-icon
 {
-    width: var(--icon-size-large);
+    width: var(--icon-size-medium);
     fill: var(--bg-color-first);
     cursor: pointer;
 }
@@ -140,8 +151,9 @@ header
     width: 100%;
 
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
     gap: 1rem;
 
     padding: 1rem;
@@ -152,6 +164,16 @@ header
     box-shadow: 0px 0.4rem 0px var(--bg-color-second);
 
     cursor: pointer;
+}
+.sidebar-item-header
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    pointer-events: none;
+    border: solid 4px pink;
 }
 .sidebar-item-name
 {
@@ -165,8 +187,19 @@ header
     width: var(--icon-size-large);
     fill: var(--bg-color-first);
 }
+.sidebar-item-description
+{
+    width: 100%;
+    color: pink;
+    border: yellow solid 3px;
+    pointer-events: none;
+}
 .lightmode-icon-wrapper
 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     padding: 0.1em;
     background-color: var(--primary-color);
     border: var(--border);
@@ -178,7 +211,7 @@ header
 }
 .lightmode-icon
 {
-    width: var(--icon-size-large);
+    width: var(--icon-size-medium);
     fill: var(--bg-color-first);
     cursor: pointer;
 }
