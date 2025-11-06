@@ -51,45 +51,68 @@ function getDescription(button)
 
     if (button === 'howToPlay')
     {
-        const text = document.createElement('p');
+        description.classList.add('sidebar-how-to-play-description');
 
-        text.textContent = `De 2 a 5 times.
-        Cada time com 2 a 3 pessoas.
-        
-        Principais regras:
-        Round 1 = livre
-        Round 2 = 1 palavra
-        Round 3 = mímica`;
+        /* RULES */
+        const rulesList = document.createElement('ol');
+        rulesList.classList.add('sidebar-how-to-play-rules');
 
-        description.appendChild(text);
+        const rulesArray = [
+            '2-5 teams, 1-3 players each.', 
+            'Set the timer and words per player', 
+            'Enter all words for the game', 
+            'Teams take turns: one speaker helps their team guess', 
+            'A round ends when all words are used'
+        ];
+
+        rulesArray.forEach((rule) => {
+            const rulesItem = document.createElement('li');
+            rulesItem.classList.add('sidebar-how-to-play-rules-item');
+            rulesItem.textContent = rule;
+            rulesList.append(rulesItem);
+        })
+
+        /* ROUNDS */
+        const rounds = document.createElement('div');
+        rounds.classList.add('sidebar-how-to-play-rounds');
+
+        const roundsHeader = document.createElement('p');
+        roundsHeader.classList.add('sidebar-how-to-play-rounds-header');
+        roundsHeader.textContent = 'Rounds';
+
+        const roundsList = document.createElement('ul');
+        roundsList.classList.add('sidebar-how-to-play-rounds-list');
+
+        const roundsArray = [
+            'Round 1: Explain freely (not the word itself)',
+            'Round 2: Use only one word',
+            'Round 3: Use only charades'
+        ];
+
+        roundsArray.forEach((round) => {
+            const roundsItem = document.createElement('li');
+            roundsItem.classList.add('sidebar-how-to-play-rounds-item');
+            roundsItem.textContent = round;
+            roundsList.append(roundsItem);
+        })
+
+        rounds.append(roundsHeader, roundsList);
+
+        /* GOAL */
+        const goal = document.createElement('p');
+        goal.classList.add('sidebar-how-to-play-goal');
+        goal.textContent = 'The team that guesses the most words wins!';
+
+        /* APPEND */
+        description.append(rulesList, rounds, goal);
     }
     else if (button === 'newGame')
     {
-        const text = document.createElement('p');
 
-        text.textContent = `De 2 a 5 times.
-        Cada time com 2 a 3 pessoas.
-        
-        Principais regras:
-        Round 1 = livre
-        Round 2 = 1 palavra
-        Round 3 = mímica`  
-
-        description.appendChild(text);
     }
     else if (button === 'about')
     {
-        const text = document.createElement('p');
 
-        text.textContent = `De 2 a 5 times.
-        Cada time com 2 a 3 pessoas.
-        
-        Principais regras:
-        Round 1 = livre
-        Round 2 = 1 palavra
-        Round 3 = mímica`
-
-        description.appendChild(text);
     }
 
     return description;
