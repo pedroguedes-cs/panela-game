@@ -113,6 +113,7 @@
     border-top: var(--border) var(--bg-color-second);
 
     pointer-events: none;
+    display: none;
 }
 .lightmode-icon-wrapper
 {
@@ -150,6 +151,8 @@
 
 
 /* SIDEBAR ITEMS DESCRIPTION */
+
+/* HOW TO PLAY DESCIPTION */
 .sidebar-how-to-play-description
 {
     display: flex;
@@ -157,6 +160,7 @@
     justify-content: center;
     align-items: flex-start;
     gap: 2rem;
+    display: none;
 }
 .sidebar-how-to-play-rules
 {
@@ -180,11 +184,131 @@
 {
     list-style-position: inside;
 }
-.sidebar-how-to-play-rounds-header
+.sidebar-how-to-play-goal-wrapper
 {
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
 }
-.sidebar-how-to-play-goal
+.sidebar-how-to-play-goal-icon
 {
-
+    width: var(--icon-size-small);
+    fill: var(--bg-color-first);
+    pointer-events: all;
 }
+
+/* NEW GAME DESCRIPTION */
+.sidebar-new-game-description
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    display: none;
+}
+.sidebar-new-game-attention-icon
+{
+    width: var(--icon-size-giant);
+    fill: var(--information-color);
+}
+.sidebar-new-game-message
+{
+    text-align: center;
+}
+.sidebar-new-game-buttons-wrapper
+{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.confirm-new-game-button, .cancel-new-game-button
+{
+    width: 90%;
+
+    color: var(--text-color-first);
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+
+    padding: var(--button-padding);
+    border: var(--border) var(--text-color-first);
+    border-radius: 1rem;
+    box-shadow: 0px 0.2rem 0px var(--text-color-second);
+
+    pointer-events: all;
+    cursor: pointer;
+}
+.confirm-new-game-button
+{
+    background-color: var(--success-color);
+}
+.cancel-new-game-button
+{
+    background-color: var(--failure-color);
+}
+.confirm-new-game-button:active, .cancel-new-game-button:active
+{
+    transform: translateY(0.2rem);
+    box-shadow: 0px 0px 0px var(--text-color-second);
+}
+
+
+/* ABOUT DESCRIPTION */
+.sidebar-about-description
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    display: none;
+}
+.sidebar-item-about-image
+{
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: top;
+
+    border: var(--border) var(--bg-color-first);
+    border-radius: 16%;
+}
+.sidebar-item-about-message
+{
+    text-align: justify;
+    font-weight: var(--font-weight-medium);
+}
+.sidebar-item-about-message strong
+{
+    font-weight: var(--font-weight-medium);
+}
+.sidebar-item-about-contact-wrapper
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+.sidebar-item-about-contact-icon
+{
+    width: var(--icon-size-large);
+    fill: var(--bg-color-first);
+    pointer-events: all;
+}
+
+
+/* JS TOGGLE */
+.sidebar-item-description-open
+{
+    display: flex;
+}   

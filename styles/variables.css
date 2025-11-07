@@ -7,11 +7,12 @@
     --section-size: 85vh;
     --footer-size: 5vh;
 
+    --icon-size-giant: 5rem;
     --icon-size-large: 3rem;
     --icon-size-medium: 2.4rem;
     --icon-size-small: 2rem;
 
-    --buttom-padding: 1.5em 2em;
+    --button-padding: 1.5em 2em;
 
     --border: solid 0.2em;
     --border-radius: 1.5rem;
