@@ -1,0 +1,209 @@
+#home-screen
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 3rem;
+}
+.home-screen-input-message
+{
+    width: 100%;
+    text-align: center;
+
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-color);
+}
+
+
+/* TEAMS INPUT*/
+.teams-input-wrapper
+{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+}
+.team-input
+{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    padding: 1rem 0rem;
+
+    border: var(--border) var(--text-color-first);
+    border-radius: 1rem;
+    box-shadow: 0px 0.4em 0px var(--text-color-second);
+}
+.team-name
+{
+    width: 90%;
+    text-align: center;
+
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color-first);
+}
+.players-input-wrapper
+{
+    width: 90%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+}
+.player-input
+{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+.player-name-input
+{
+    flex: 1;
+    min-width: 0;
+
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color-first);
+
+    padding: 0.2rem 1rem;
+    border: var(--border) var(--text-color-first);
+    border-radius: var(--border-radius);
+}
+.delete-player-icon
+{
+    width: var(--icon-size-small);
+    fill: var(--text-color-first);
+    cursor: pointer;
+}
+.add-player-button
+{
+    width: 90%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: var(--text-color-first);
+    padding: 0.4em;
+    border: none;
+    border-radius: 5rem;
+    box-shadow: 0px 0.4em 0px var(--text-color-second);
+
+    cursor: pointer;
+}
+.add-player-button-icon
+{
+    width: var(--icon-size-small);
+    fill: var(--bg-color-first);
+}
+.add-player-button-text
+{
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+    color: var(--bg-color-first);
+}
+.add-team-button
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: var(--text-color-first);
+    padding: var(--button-padding);
+    border: var(--border) var(--text-color-first);
+    border-radius: 1rem;
+    box-shadow: 0px 0.4em 0px var(--text-color-second);
+
+    cursor: pointer;
+}
+.add-team-button-icon
+{
+    width: var(--icon-size-small);
+    fill: var(--bg-color-first);
+}
+.add-team-button-text
+{
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+    color: var(--bg-color-first);
+}
+
+
+/* BUTTONS WRAPPER */ 
+.home-screen-buttons-wrapper
+{
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.home-screen-how-to-play-button
+{
+    width: 60%;
+    
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color-first);
+
+    background-color: var(--information-color);
+    padding: 1em 0;
+    border: var(--border) var(--text-color-first);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0.4em 0px var(--text-color-second);
+
+    cursor: pointer;
+}
+.home-screen-play-button
+{
+    width: 80%;
+
+    font-family: var(--font);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color-first);
+
+    background-color: var(--success-color);
+    padding: 1em 0;
+    border: var(--border) var(--text-color-first);
+    border-radius: var(--border-radius);
+    box-shadow: 0px 0.4em 0px var(--text-color-second);
+
+    cursor: pointer;
+}
+
+
+/* ACTIVE EFFECTS */
+.add-player-button:active, .add-team-button:active, .home-screen-how-to-play-button:active, .home-screen-play-button:active
+{
+    transform: translateY(0.4em);
+    box-shadow: 0px 0px 0px var(--text-color-second);
+} 

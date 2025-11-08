@@ -74,7 +74,7 @@
     border: var(--border);
     border-color: var(--bg-color-first);
     border-radius: 1rem;
-    box-shadow: 0px 0.4rem 0px var(--bg-color-second);
+    box-shadow: 0px 0.4em 0px var(--bg-color-second);
 
     cursor: pointer;
 }
@@ -145,7 +145,7 @@
 }
 .sidebar-item:active 
 {
-    transform: translateY(0.4rem);
+    transform: translateY(0.4em);
     box-shadow: 0px 0px 0px var(--bg-color-second);  
 }
 
@@ -240,7 +240,7 @@
     padding: var(--button-padding);
     border: var(--border) var(--text-color-first);
     border-radius: 1rem;
-    box-shadow: 0px 0.2rem 0px var(--text-color-second);
+    box-shadow: 0px 0.4em 0px var(--text-color-second);
 
     pointer-events: all;
     cursor: pointer;
@@ -255,7 +255,7 @@
 }
 .confirm-new-game-button:active, .cancel-new-game-button:active
 {
-    transform: translateY(0.2rem);
+    transform: translateY(0.4em);
     box-shadow: 0px 0px 0px var(--text-color-second);
 }
 
