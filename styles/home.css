@@ -152,6 +152,10 @@
     font-weight: var(--font-weight-medium);
     color: var(--bg-color-first);
 }
+.add-player-button-hidden
+{
+    display: none;
+}
 .add-team-button
 {
     display: flex;
@@ -179,6 +183,10 @@
     font-size: var(--font-size-regular);
     font-weight: var(--font-weight-medium);
     color: var(--bg-color-first);
+}
+.add-team-button-hidden
+{
+    display: none;
 }
 
 
