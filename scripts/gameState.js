@@ -1,32 +1,39 @@
-let gameState = JSON.parse(localStorage.getItem('gameState'));
+export let gameState = loadGameState();
 
-if (!gameState)
+export function saveGameState()
 {
-    gameState = 
+    localStorage.setItem('gameState', JSON.stringify(gameState));
+}
+
+function loadGameState()
+{
+    let saved = JSON.parse(localStorage.getItem('gameState'));
+
+    if (!saved)
     {
-        teams: [],
-        allWords: [],
-        settings: 
+        saved = 
         {
-            turnDuration: 60,
-            wordsPerPlayer: 4
-        },
-        session:
-        {
-            screenId: 'home',
-            roundNumber: 1,
-            remainingWords: [],
-            currentTurn:
+            teams: [],
+            allWords: [],
+            settings: 
             {
-                teamIndex: 0,
-                playerIndex: 0,
-                remainingTime: 0
+                turnDuration: 60,
+                wordsPerPlayer: 4
+            },
+            session:
+            {
+                screenId: 'home',
+                roundNumber: 1,
+                remainingWords: [],
+                currentTurn:
+                {
+                    teamIndex: 0,
+                    playerIndex: 0,
+                    remainingTime: 0
+                }
             }
         }
     }
-}
 
-function saveGameState()
-{
-    localStorage.setItem('gameState', JSON.stringify(gameState));
+    return saved;
 }

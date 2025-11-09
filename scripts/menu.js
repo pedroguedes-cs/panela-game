@@ -1,3 +1,5 @@
+import { homeHowToPlayButton } from "./home.js";
+
 /* TOGGLE MENU */
 const sidebar = document.querySelector('.sidebar');
 const overlay = document.querySelector('.overlay');
@@ -11,7 +13,7 @@ const aboutButton = document.querySelector('.sidebar-about-button');
 openButton.addEventListener('click', openSidebar);
 closeButton.addEventListener('click', closeSidebar);
 
-function openSidebar()
+export function openSidebar()
 {
     openButton.classList.add('hamburguer-menu-icon-wrapper-hidden');
     sidebar.classList.add('sidebar-open');
@@ -33,7 +35,7 @@ function closeSidebar()
 /* CLICK OUTSIDE TO CLOSE */
 document.addEventListener('click', (event) =>
 {
-    const clickInside = sidebar.contains(event.target) || openButton.contains(event.target);
+    const clickInside = sidebar.contains(event.target) || openButton.contains(event.target) || homeHowToPlayButton.contains(event.target);
 
     if (!clickInside)
     {
@@ -47,7 +49,7 @@ howToPlayButton.addEventListener('click', (event) => {toggleDescription(event.ta
 newGameButton.addEventListener('click', (event) => {toggleDescription(event.target)});
 aboutButton.addEventListener('click', (event) => {toggleDescription(event.target)});
 
-function toggleDescription(target)
+export function toggleDescription(target)
 {
     const sidebarDescription = target.querySelector('.sidebar-item-description');
 

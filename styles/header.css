@@ -35,6 +35,7 @@ header
 .overlay-show
 {
     opacity: 1;
+    pointer-events: auto;
 }
 .logo-area
 {
