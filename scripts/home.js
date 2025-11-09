@@ -24,7 +24,13 @@ function renderHomeScreenTeams()
     else
     {
         gameState.teams.forEach((team, index) => {
+            if (team.length === 0)
+            {
+                team.push('');
+            }
+            
             createdTeamsWrapper.appendChild(generateTeamInput(team, index));
+
             const addPlayerButton = createdTeamsWrapper.children[index].querySelector('.add-player-button');
 
             if (gameState.teams[index].length >= maxPlayersPerTeam)
@@ -74,17 +80,9 @@ function generateTeamInput(teamArray, teamIndex)
     const playersInput = document.createElement('div');
     playersInput.classList.add('players-input-wrapper');
 
-    if (teamArray.length === 0)
-    {
-        playersInput.appendChild(generatePlayerInput(teamIndex, '', 0));
-    }
-    else
-    {
-        teamArray.forEach((playerName, playerIndex) => {
-            playersInput.appendChild(generatePlayerInput(teamIndex, playerName, playerIndex));
-        })
-    }
-
+    teamArray.forEach((playerName, playerIndex) => {
+        playersInput.appendChild(generatePlayerInput(teamIndex, playerName, playerIndex));
+    })
 
     /* ADD PLAYER BUTTON */
     const addPlayerButton = document.createElement('button');
