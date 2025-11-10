@@ -18,6 +18,7 @@ function renderHomeScreenTeams()
 {
     createdTeamsWrapper.innerHTML = '';
     invalidInputMessage.classList.remove('teams-input-invalid-message-show');
+    addTeamButton.classList.remove('add-team-button-invalid');
 
     if (gameState.teams.length === 0)
     {
@@ -201,6 +202,11 @@ function checkTeams()
     const teamsCounter = gameState.teams.length;
     let invalidTeamsCounter = 0;
 
+    if (teamsCounter < 2)
+    {
+        addTeamButton.classList.add('add-team-button-invalid');
+    }
+
     gameState.teams.forEach((team, index) => {
         if (isInvalidTeam(team))
         {
@@ -232,10 +238,9 @@ function isInvalidTeam(teamArray)
 function removeErrorMessages()
 {
     invalidInputMessage.classList.remove('teams-input-invalid-message-show');
+    addTeamButton.classList.remove('add-team-button-invalid');
     Array.from(createdTeamsWrapper.children).forEach((child) => {
         child.classList.remove('team-input-invalid');
     })
-
-    console.log('remove error messages');
 }
 

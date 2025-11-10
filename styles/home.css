@@ -214,6 +214,10 @@
 
     cursor: pointer;
 }
+.add-team-button-invalid
+{
+    background-color: var(--failure-color);
+}
 .add-team-button-icon
 {
     width: var(--icon-size-small);
