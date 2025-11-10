@@ -14,8 +14,8 @@ export const homeHowToPlayButton = document.querySelector('.home-screen-how-to-p
 const homeContinueButton = document.querySelector('.home-screen-continue-button');
 const invalidInputMessage = document.querySelector('.teams-input-invalid-message');
 
-/* RENDER */
-function renderHomeScreenTeams()
+/* LOAD */
+function loadHomeScreenTeams()
 {
     createdTeamsWrapper.innerHTML = '';
     invalidInputMessage.classList.remove('teams-input-invalid-message-show');
@@ -167,40 +167,26 @@ function addPlayer(teamIndex)
 {
     gameState.teams[teamIndex].push('');
     saveGameState();
-    renderHomeScreenTeams();
+    loadHomeScreenTeams();
 }
 function deletePlayer(teamIndex, playerIndex)
 {
     gameState.teams[teamIndex].splice(playerIndex, 1);
     saveGameState();
-    renderHomeScreenTeams();
+    loadHomeScreenTeams();
 }
 function addTeam()
 {
     gameState.teams.push(['']);
     saveGameState();
-    renderHomeScreenTeams();
+    loadHomeScreenTeams();
 }
 function deleteTeam(teamIndex)
 {
     gameState.teams.splice(teamIndex, 1);
     saveGameState();
-    renderHomeScreenTeams();
+    loadHomeScreenTeams();
 }
-function startPlay()
-{
-
-}
-function saveTeams()
-{
-
-}
-
-
-renderHomeScreenTeams();
-
-
-
 function checkTeams()
 {
     let isValid = true;
@@ -232,7 +218,6 @@ function checkTeams()
 
     return isValid;
 }
-
 function isInvalidTeam(teamArray)
 {
     if (teamArray.length < 2)
@@ -242,7 +227,6 @@ function isInvalidTeam(teamArray)
 
     return teamArray.some((player) => {return player === ''});
 }
-
 function removeErrorMessages()
 {
     invalidInputMessage.classList.remove('teams-input-invalid-message-show');
@@ -251,4 +235,8 @@ function removeErrorMessages()
         child.classList.remove('team-input-invalid');
     })
 }
+
+
+/* CALLS */
+loadHomeScreenTeams();
 

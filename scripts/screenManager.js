@@ -21,7 +21,7 @@ export function showScreen(screenName)
     }
 }
 
-showScreen('home-screen');
+showScreen(gameState.session.screenId);
 
 /*
 
