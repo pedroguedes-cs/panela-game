@@ -11,11 +11,13 @@ const createdTeamsWrapper = document.querySelector('.created-teams-wrapper');
 const addTeamButton = document.querySelector('.add-team-button');
 export const homeHowToPlayButton = document.querySelector('.home-screen-how-to-play-button');
 const homePlayButton = document.querySelector('.home-screen-play-button');
+const invalidInputMessage = document.querySelector('.teams-input-invalid-message');
 
 /* RENDER */
 function renderHomeScreenTeams()
 {
     createdTeamsWrapper.innerHTML = '';
+    invalidInputMessage.classList.remove('teams-input-invalid-message-show');
 
     if (gameState.teams.length === 0)
     {
@@ -119,6 +121,7 @@ function generatePlayerInput(teamIndex, playerName, playerIndex)
     input.dataset.teamIndex = teamIndex;
     input.dataset.playerIndex = playerIndex;
     input.addEventListener('input', () => {
+        removeErrorMessages();
         gameState.teams[teamIndex][playerIndex] = input.value;
         saveGameState();
     })
@@ -147,6 +150,10 @@ addTeamButton.addEventListener('click', () => {
 homeHowToPlayButton.addEventListener('click', () => {
     openSidebar();
     toggleDescription(document.querySelector('.sidebar-how-to-play-button'));
+})
+
+homePlayButton.addEventListener('click', () => {
+    checkTeams();
 })
 
 
@@ -186,3 +193,49 @@ function saveTeams()
 
 
 renderHomeScreenTeams();
+
+
+
+function checkTeams()
+{
+    const teamsCounter = gameState.teams.length;
+    let invalidTeamsCounter = 0;
+
+    gameState.teams.forEach((team, index) => {
+        if (isInvalidTeam(team))
+        {
+            createdTeamsWrapper.children[index].classList.add('team-input-invalid');
+            invalidTeamsCounter++;
+        }
+        else
+        {
+            createdTeamsWrapper.children[index].classList.remove('team-input-invalid');
+        }
+    })
+
+    if (teamsCounter < 2 || invalidTeamsCounter > 0)
+    {
+        invalidInputMessage.classList.add('teams-input-invalid-message-show')
+    }
+}
+
+function isInvalidTeam(teamArray)
+{
+    if (teamArray.length < 2)
+    {
+        return true;
+    }
+
+    return teamArray.some((player) => {return player === ''});
+}
+
+function removeErrorMessages()
+{
+    invalidInputMessage.classList.remove('teams-input-invalid-message-show');
+    Array.from(createdTeamsWrapper.children).forEach((child) => {
+        child.classList.remove('team-input-invalid');
+    })
+
+    console.log('remove error messages');
+}
+
