@@ -5,6 +5,8 @@
     justify-content: flex-start;
     align-items: stretch;
     gap: 3rem;
+
+    display: none;
 }
 .home-screen-input-message
 {
@@ -40,10 +42,6 @@
     font-size: var(--font-size-regular);
     font-weight: var(--font-weight-medium);
     color: var(--failure-color);
-}
-.teams-input-invalid-message-list
-{
-
 }
 .teams-input-invalid-message-list-item
 {
@@ -90,7 +88,7 @@
     padding: 1rem 0rem;
 
     border: var(--border) var(--text-color-first);
-    border-radius: 1rem;
+    border-radius: var(--border-radius);
     box-shadow: 0px 0.4em 0px var(--text-color-second);
 }
 .team-input-invalid
@@ -264,7 +262,7 @@
 
     cursor: pointer;
 }
-.home-screen-play-button
+.home-screen-continue-button
 {
     width: 70%;
 
@@ -284,7 +282,7 @@
 
 
 /* ACTIVE EFFECTS */
-.add-player-button:active, .add-team-button:active, .home-screen-how-to-play-button:active, .home-screen-play-button:active
+.add-player-button:active, .add-team-button:active, .home-screen-how-to-play-button:active, .home-screen-continue-button:active
 {
     transform: translateY(0.4em);
     box-shadow: 0px 0px 0px var(--text-color-second);

@@ -10,7 +10,7 @@ const maxPlayersPerTeam = 3;
 const createdTeamsWrapper = document.querySelector('.created-teams-wrapper');
 const addTeamButton = document.querySelector('.add-team-button');
 export const homeHowToPlayButton = document.querySelector('.home-screen-how-to-play-button');
-const homePlayButton = document.querySelector('.home-screen-play-button');
+const homeContinueButton = document.querySelector('.home-screen-continue-button');
 const invalidInputMessage = document.querySelector('.teams-input-invalid-message');
 
 /* RENDER */
@@ -153,7 +153,7 @@ homeHowToPlayButton.addEventListener('click', () => {
     toggleDescription(document.querySelector('.sidebar-how-to-play-button'));
 })
 
-homePlayButton.addEventListener('click', () => {
+homeContinueButton.addEventListener('click', () => {
     checkTeams();
 })
 
@@ -199,6 +199,7 @@ renderHomeScreenTeams();
 
 function checkTeams()
 {
+    let isValid = true;
     const teamsCounter = gameState.teams.length;
     let invalidTeamsCounter = 0;
 
@@ -221,8 +222,11 @@ function checkTeams()
 
     if (teamsCounter < 2 || invalidTeamsCounter > 0)
     {
+        isValid = false;
         invalidInputMessage.classList.add('teams-input-invalid-message-show')
     }
+
+    return isValid;
 }
 
 function isInvalidTeam(teamArray)
