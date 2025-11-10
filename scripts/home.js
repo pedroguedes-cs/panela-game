@@ -1,4 +1,5 @@
 import { gameState, saveGameState } from "./gameState.js";
+import { showScreen } from "./screenManager.js";
 import { createSVG } from "./utilities.js";
 import { openSidebar, toggleDescription } from "./menu.js";
 
@@ -154,7 +155,10 @@ homeHowToPlayButton.addEventListener('click', () => {
 })
 
 homeContinueButton.addEventListener('click', () => {
-    checkTeams();
+    if (checkTeams())
+    {
+        showScreen('settings-screen');
+    }
 })
 
 

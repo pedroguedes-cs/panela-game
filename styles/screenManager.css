@@ -1,3 +1,7 @@
+section:not(.section-hidden)
+{
+    display: flex;
+}
 .section-hidden
 {
     display: none;

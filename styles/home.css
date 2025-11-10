@@ -1,12 +1,10 @@
 #home-screen
 {
-    display: flex;
+    /*display: flex; [screenManager.css]*/ 
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
     gap: 3rem;
-
-    display: none;
 }
 .home-screen-input-message
 {

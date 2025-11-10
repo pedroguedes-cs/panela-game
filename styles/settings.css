@@ -1,6 +1,6 @@
 #settings-screen
 {
-    display: flex;
+    /*display: flex; [screenManager.css]*/ 
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
@@ -24,23 +24,23 @@
 
     background-color: var(--bg-color-first);
     padding: 1em 0;
-    border: var(--border) var(--primary-color);
+    border: var(--border) var(--text-color-first);
     border-radius: var(--border-radius);
-    box-shadow: 0px 0.4em 0px var(--primary-color-dark);
+    box-shadow: 0px 0.4em 0px var(--text-color-second);
 
     cursor: pointer;
 }
 .settings-screen-back-button-icon
 {
     width: var(--icon-size-small);
-    fill: var(--primary-color);
+    fill: var(--text-color-first);
 }
 .settings-screen-back-button-span
 {
     font-family: var(--font);
     font-size: var(--font-size-regular);
     font-weight: var(--font-weight-medium);
-    color: var(--primary-color);
+    color: var(--text-color-first);
 }
 
 
@@ -67,7 +67,7 @@
     align-items: stretch;
     gap: 1rem;
 }
-.settings-screen-timer-input-wrapper, .settings-screen-words-input-wrapper
+.settings-screen-timer-input-wrapper, .settings-screen-words-per-player-input-wrapper
 {
     display: flex;
     flex-direction: column;
@@ -81,8 +81,14 @@
     border-radius: var(--border-radius);
     box-shadow: 0px 0.4em 0px var(--text-color-second);
 }
+.settings-screen-timer-input-icon, .settings-screen-words-per-player-input-icon
+{
+    width: var(--icon-size-medium);
+    fill: var(--text-color-first);
+}
 .timer-input-label, .words-per-player-input-label
 {
+    text-align: center;
     font-family: var(--font);
     font-size: var(--font-size-regular);
     font-weight: var(--font-weight-medium);
@@ -90,16 +96,16 @@
 }
 #timer-input, #words-per-player-input
 {
-    width: 50%;
+    width: 70%;
     text-align: center;
 
     font-family: var(--font);
     font-size: var(--font-size-medium);
     font-weight: var(--font-weight-medium);
-    color: var(--text-color-first);
+    color: var(--bg-color-first);
 
     padding: 0.5rem;
-    background-color: var(--bg-color-first);
+    background-color: var(--text-color-first);
     border: 0.2rem solid var(--text-color-first);
     border-radius: var(--border-radius);
 

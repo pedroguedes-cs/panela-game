@@ -13,12 +13,15 @@ export function showScreen(screenName)
         currentScreen.classList.remove('section-hidden');
         gameState.session.screenId = screenName;
         saveGameState();
+        console.log(`change to ${screenName}`)
     }
     else
     {
         console.log(`couldnt change to screen ${screenName}`);
     }
 }
+
+showScreen('home-screen');
 
 /*
 
