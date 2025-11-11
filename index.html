@@ -7,11 +7,11 @@
 
     <link rel="stylesheet" href="styles/variables.css">
     <link rel="stylesheet" href="styles/general.css">
-    <link rel="stylesheet" href="styles/header.css">
-    <link rel="stylesheet" href="styles/sidebar.css">
-    <link rel="stylesheet" href="styles/home.css">
-    <link rel="stylesheet" href="styles/settings.css">
-    <link rel="stylesheet" href="styles/screenManager.css">
+    <link rel="stylesheet" href="styles/menu/header.css">
+    <link rel="stylesheet" href="styles/menu/sidebar.css">
+    <link rel="stylesheet" href="styles/screens/home.css">
+    <link rel="stylesheet" href="styles/screens/settings.css">
+    <link rel="stylesheet" href="styles/screens/screenManager.css">
 
 </head>
 <body>
@@ -178,11 +178,22 @@
         </div>
     </section>
 
-    <script src="scripts/gameState.js" type="module"></script>
-    <script src="scripts/screenManager.js" type="module"></script>
-    <script src="scripts/menu.js" type="module"></script>
-    <script src="scripts/utilities.js" type="module"></script>
-    <script src="scripts/home.js" type="module"></script>
-    <script src="scripts/settings.js" type="module"></script>
+    <!-- SCRIPTS -->
+    <script type="module" src="scripts/main.js"></script>
+
+    <script type="module" src="scripts/core/constants.js"></script>
+    <script type="module" src="scripts/core/GameState.js"></script>
+    <script type="module" src="scripts/core/GameController.js"></script>
+
+    <script type="module" src="scripts/entities/Team.js"></script>
+    <script type="module" src="scripts/entities/Player.js"></script>
+    <script type="module" src="scripts/entities/WordBank.js"></script>
+
+    <script type="module" src="scripts/screens/menu.js"></script>
+    <script type="module" src="scripts/screens/home.js"></script>
+    <script type="module" src="scripts/screens/settings.js"></script>
+
+    <script type="module" src="scripts/icons/iconBuilder.js"></script>
+    <script type="module" src="scripts/icons/icons.js"></script>
 </body>
 </html>

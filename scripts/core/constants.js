@@ -1,0 +1,6 @@
+export const LIMITS = {
+    MIN_TEAMS: 2,
+    MAX_TEAMS: 5,
+    MIN_PLAYERS_PER_TEAM: 2,
+    MAX_PLAYERS_PER_TEAM: 3
+}
