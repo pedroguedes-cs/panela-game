@@ -45,11 +45,26 @@
 
 
 /* HEADER */
-.settings-screen-header
+.settings-screen-header-wrapper
 {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.settings-screen-header
+{
     text-align: center;
-
+    font-family: var(--font);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-color);
+}
+.settings-screen-header-description
+{
+    text-align: center;
     font-family: var(--font);
     font-size: var(--font-size-regular);
     font-weight: var(--font-weight-medium);

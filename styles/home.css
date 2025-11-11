@@ -6,51 +6,33 @@
     align-items: stretch;
     gap: 3rem;
 }
-.home-screen-input-message
+
+/* HEADER */
+.home-screen-header-wrapper
 {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+.home-screen-header
+{
     text-align: center;
-
+    font-family: var(--font);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-medium);
+    color: var(--primary-color);
+}
+.home-screen-header-description
+{
+    text-align: center;
     font-family: var(--font);
     font-size: var(--font-size-regular);
     font-weight: var(--font-weight-medium);
     color: var(--primary-color);
 }
-
-.teams-input-invalid-message
-{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-
-    padding: var(--button-padding);
-    border: var(--border) var(--failure-color);
-    border-radius: var(--border-radius);
-    display: none;
-}
-.teams-input-invalid-message-show
-{
-    display: flex;
-}
-.teams-input-invalid-message-header
-{
-    font-family: var(--font);
-    font-size: var(--font-size-regular);
-    font-weight: var(--font-weight-medium);
-    color: var(--failure-color);
-}
-.teams-input-invalid-message-list-item
-{
-    list-style-position: inside;
-    
-    font-family: var(--font);
-    font-size: var(--font-size-regular);
-    font-weight: var(--font-weight-medium);
-    color: var(--text-color-first);
-}
-
 
 /* TEAMS INPUT*/
 .teams-input-wrapper
@@ -229,6 +211,41 @@
 .add-team-button-hidden
 {
     display: none;
+}
+
+/* INVALID MESSAGE */
+.teams-input-invalid-message
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    padding: var(--button-padding);
+    border: var(--border) var(--failure-color);
+    border-radius: var(--border-radius);
+    display: none;
+}
+.teams-input-invalid-message-show
+{
+    display: flex;
+}
+.teams-input-invalid-message-header
+{
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+    color: var(--failure-color);
+}
+.teams-input-invalid-message-list-item
+{
+    list-style-position: inside;
+    
+    font-family: var(--font);
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color-first);
 }
 
 
