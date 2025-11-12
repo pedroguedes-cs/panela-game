@@ -1,4 +1,30 @@
-export let gameState = loadGameState();
+import { GAME_CONSTANTS } from "./GameConstants.js";
+import { Screen } from "./Screen.js";
+
+export class GameState
+{
+    #teams = [];
+    #playersSequence = null;
+    #wordBank = null;
+    #settings = {
+        turnTime: GAME_CONSTANTS.TURN_TIME_DEFAULT,
+        wordsPerPlayer: GAME_CONSTANTS.WORDS_PER_PLAYER_DEFAULT
+    }
+    #session = {
+        screenId: Screen.HOME,
+        roundCounter: 1,
+        remainingTurnTime: 0
+    }
+
+    constructor()
+    {
+        
+    }
+
+}
+
+
+/*export let gameState = loadGameState();
 
 export function saveGameState()
 {
@@ -36,4 +62,4 @@ function loadGameState()
     }
 
     return saved;
-}
+}*/
