@@ -1,5 +1,3 @@
-import { LIMITS } from "../core/constants.js";
-
 export class Player
 {
     #name = '';
@@ -9,16 +7,7 @@ export class Player
     constructor(playerName = '', playerWords = [], speakerPoints = 0)
     {
         this.#name = playerName;
-
-        if (playerWords.length > LIMITS.MAX_WORDS_PER_PLAYER)
-        {
-            console.warn(`cant assing ${playerWords.length} words to a player`);
-            this.#words = [];
-        }
-        else
-        {
-            this.#words = playerWords;
-        }
+        this.#words = playerWords;
 
         if (speakerPoints < 0)
         {
@@ -63,9 +52,8 @@ export class Player
     }
     setWordsSize(size)
     {
-        if (size < LIMITS.MIN_WORDS_PER_PLAYER || size > LIMITS.MAX_WORDS_PER_PLAYER)
+        if (size < 0)
         {
-            console.warn(`invalid words per player resizing: ${size}`);
             return false;
         }
 
@@ -108,5 +96,15 @@ export class Player
     incrementSpeakerPoint()
     {
         this.#speakerPoints++;
+    }
+
+    /* LOCAL STORAGE */
+    toJSON()
+    {
+        
+    }
+    static fromJSON(json)
+    {
+        return new Player(json.name, json.words, json.speakerPoints);
     }
 }

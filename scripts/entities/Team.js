@@ -1,31 +1,16 @@
-import { LIMITS } from "../core/constants.js";
 import { Player } from "./Player.js";
 
 
 export class Team 
 {
     #players = [];
-    #playsStack = [];
+    #turnsStack = [];
     #score = [];
 
-    constructor(players = [], playStack = [], score = [])
+    constructor(players = [], turnsStack = [], score = [])
     {
-        if (players.length > LIMITS.MAX_PLAYERS_PER_TEAM)
-        {
-            console.warn(`cant assing ${players.length} players to a team`);
-
-            for (let i = 0; i < LIMITS.MAX_PLAYERS_PER_TEAM; i++)
-            {
-                this.#players.push(players[i]);
-            }
-        }
-        else
-        {
-            this.#players = players;
-        }
-
-        this.#playsStack = playStack;
-
+        this.#players = players;
+        this.#turnsStack = turnsStack;
         this.#score = score
     }
 
@@ -36,7 +21,7 @@ export class Team
     }
     getPlaysCopy()
     {
-        return [...this.#playsStack];
+        return [...this.#turnsStack];
     }
     getScoreCopy()
     {
@@ -54,15 +39,15 @@ export class Team
 
         return this.#players[index];
     }
-    getPlay(index)
+    getTurn(index)
     {
-        if (index < 0 || index >= this.#playsStack.length)
+        if (index < 0 || index >= this.#turnsStack.length)
         {
-            console.warn(`getPlay index out of bounds`);
+            console.warn(`getTurn index out of bounds`);
             return false;
         } 
 
-        return this.#playsStack[index];
+        return this.#turnsStack[index];
     }
     getScore(index)
     {
@@ -84,35 +69,53 @@ export class Team
 
         return totalScore;
     }
-    getBestPlay()
+    getBestTurn()
     {
-        if (this.#playsStack.length === 0)
+        if (this.#turnsStack.length === 0)
         {
             return false;
         }
 
-        let bestPlay;
+        let bestTurn;
 
-        this.#playsStack.forEach((play, index) => {
-            if (index === 0 || play.getPoints() > bestPlay.getPoints())
+        this.#turnsStack.forEach((turn, index) => {
+            if (index === 0 || turn.getPoints() > bestTurn.getPoints())
             {
-                bestPlay = play;
+                bestTurn = turn;
             }
         })
 
-        return bestPlay.getDataCopy();
+        return bestTurn.getDataCopy();
     }
 
     /* SETTERS */
+    addPlayer(player)
+    {
+        this.#players.push(player);
+    }
+    deletePlayer(index)
+    {
+        if (index < 0 || index >= this.#players.length)
+        {
+            console.warn(`getPlayer index out of bounds`);
+            return false;
+        }
+
+        this.#players.splice(index, 1);
+    }
+    addTurn(turn)
+    {
+        this.#turnsStack.push(turn);
+    }
 
     /* COUNT GETTERS */
     getPlayersCount()
     {
         return this.#players.length;
     }
-    getPlaysStackCount()
+    getTurnsStackCount()
     {
-        return this.#playsStack.length;
+        return this.#turnsStack.length;
     }
     getScoreCount()
     {
@@ -137,5 +140,16 @@ export class Team
         }
 
         return true;
+    }
+
+
+    /* LOCAL STORAGE */
+    toJSON()
+    {
+        
+    }
+    static fromJSON(json)
+    {
+        
     }
 }
