@@ -8,15 +8,7 @@ export class Player
     {
         this.#name = playerName;
         this.#words = playerWords;
-
-        if (speakerPoints < 0)
-        {
-            this.#speakerPoints = 0;
-        }
-        else 
-        {
-            this.#speakerPoints = speakerPoints
-        }
+        this.#speakerPoints = Math.max(0, speakerPoints);
     }
 
     /* COPIES */
@@ -101,10 +93,15 @@ export class Player
     /* LOCAL STORAGE */
     toJSON()
     {
-        
+        return {
+            name: this.#name,
+            words: this.#words.map((word) => {return word.toJSON()}),
+            speakerPoints: this.#speakerPoints
+        }
     }
     static fromJSON(json)
     {
-        return new Player(json.name, json.words, json.speakerPoints);
+        const wordsFromJSON = json.words.map((word) => {return Word.fromJSON(word)});
+        return new Player(json.name, wordsFromJSON, json.speakerPoints);
     }
 }

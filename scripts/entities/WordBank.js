@@ -4,20 +4,26 @@ export class WordBank
     #topIndex = 0;
     #bottomIndex = 0;
 
-    constructor(words = [])
+    constructor(words = [], bottomIndex = 0)
     {
         this.#words = words;
-        
-        if (words.length != 0)
+
+        this.#topIndex = words.length;
+
+        if (bottomIndex >= words.length || bottomIndex < 0)
         {
-            this.#topIndex = words.length - 1;
+            this.#bottomIndex = 0;
+        }
+        else
+        {
+            this.#bottomIndex = bottomIndex;
         }
     }
 
     /* GETTERS */
     getWord()
     {
-        if (this.#words.length === 0)
+        if (this.isEmpty())
         {
             console.warn('Empty wordBank');
             return null;
@@ -33,7 +39,7 @@ export class WordBank
     /* SETTERS */
     markAsGuessed()
     {
-        if (this.#bottomIndex > this.#topIndex)
+        if (this.allWordsGuessed())
         {
             return false;
         }
@@ -72,8 +78,26 @@ export class WordBank
             [this.#words[currentIndex], this.#words[randomIndex]] = [this.#words[randomIndex], this.#words[currentIndex]];
         }
     }
-    isEmpty()
+    allWordsGuessed()
     {
         return (this.#bottomIndex > this.#topIndex);
+    }
+    isEmpty()
+    {
+        return (this.#words.length === 0);
+    }
+
+    /* LOCAL STORAGE */
+    toJSON()
+    {
+        return {
+            words: this.#words.map((word) => {return word.toJSON()}),
+            bottomIndex: this.#bottomIndex
+        }
+    }
+    static fromJSON(json)
+    {
+        const wordsFromJSON = json.words.map((word) => {return Word.fromJSON(word)});
+        return new WordBank(wordsFromJSON, json.bottomIndex);
     }
 }

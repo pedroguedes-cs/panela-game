@@ -146,10 +146,16 @@ export class Team
     /* LOCAL STORAGE */
     toJSON()
     {
-        
+        return {
+            players: this.#players.map((player) => {return player.toJSON()}),
+            turnsStack: this.#turnsStack.map((turn) => {return turn.toJSON()}),
+            score: this.#score
+        }
     }
     static fromJSON(json)
     {
-        
+        const playersFromJSON = json.players.map((player) => {return Player.fromJSON(player)});
+        const turnsStackFromJSON = json.turnsStack.map((turn) => {return Turn.fromJSON(turn)});
+        return new Team(playersFromJSON, turnsStackFromJSON, json.score);
     }
 }
