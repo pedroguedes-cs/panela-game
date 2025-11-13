@@ -13,26 +13,25 @@ export class Session
         this.#remainingTurnTime = Math.max(0, remainingTurnTime);
     }
 
+    /*=====[GETTERS]=====*/
     getScreenId()
     {
         return this.#screenId;
     }
-
     getRound()
     {
         return this.#round;
     }
-
     getRemainingTurnTime()
     {
         return this.#remainingTurnTime;
     }
 
+    /*=====[SETTERS]=====*/
     setScreenId(screenId)
     {
         this.#screenId = screenId;
     }
-
     setRound(round)
     {
         if (round < 0)
@@ -44,7 +43,6 @@ export class Session
         this.#round = round;
         return true
     }
-
     setRemainingTurnTime(remainingTurnTime)
     {
         if (remainingTurnTime < 0)
@@ -57,7 +55,7 @@ export class Session
         return true;
     }
 
-    /* LOCAL STORAGE */
+    /*=====[LOCAL STORAGE]=====*/
     toJSON()
     {
         return {

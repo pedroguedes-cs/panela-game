@@ -11,7 +11,7 @@ export class Settings
         this.#wordsPerPlayer = Math.max(1, wordsPerPlayer);
     }
 
-    /* GETTERS */
+    /*=====[GETTERS]=====*/
     getTurnTime()
     {
         return this.#turnTime;
@@ -21,7 +21,7 @@ export class Settings
         return this.#wordsPerPlayer;
     }
 
-    /* SETTERS */
+    /*=====[SETTERS]=====*/
     setTurnTime(turnTime)
     {
         turnTime = Number(turnTime);
@@ -49,7 +49,7 @@ export class Settings
         return true;
     }
 
-    /* LOCAL STORAGE */
+    /*=====[LOCAL STORAGE]=====*/
     toJSON()
     {
         return {

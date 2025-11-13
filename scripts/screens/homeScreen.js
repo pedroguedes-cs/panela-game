@@ -1,20 +1,99 @@
-import { gameState, saveGameState } from "./gameState.js";
+import { GameEvents } from "../core/GameEvents.js";
+
+
+/*=====[HTML ELEMENTS]=====*/
+
+
+/*=====[INIT]=====*/
+function initHomeScreen()
+{
+    GameEvents.addEventListener('teamsUpdated', renderHomeScreen);
+}
+
+/*=====[SETUP]=====*/
+function getElementsHomeScreen()
+{
+    
+}
+function addListenersHomeScreen()
+{
+
+}
+
+/*=====[EVENT HANDLERS]=====*/
+function onAddTeam()
+{
+
+}
+function onDeleteTeam()
+{
+
+}
+function onAddPlayer()
+{
+
+}
+function onDeletePlayer()
+{
+
+}
+function onPlayerInput()
+{
+
+}
+function onHowToPlay()
+{
+
+}
+function onContinue()
+{
+
+}
+
+/*=====[RENDER]=====*/
+function renderHomeScreen()
+{
+
+}
+function createTeamInputElement()
+{
+    
+}
+function createPlayerInputElement()
+{
+
+}
+function renderError()
+{
+    
+}
+function hideError()
+{
+
+}
+
+
+
+
+
+
+/*import { gameState, saveGameState } from "./gameState.js";
 import { showScreen } from "./screenManager.js";
 import { createSVG } from "./utilities.js";
 import { openSidebar, toggleDescription } from "./menu.js";
 
-/* variables */
+/* variables 
 const maxTeams = 5;
 const maxPlayersPerTeam = 3;
 
-/* html elements */
+/* html elements 
 const createdTeamsWrapper = document.querySelector('.created-teams-wrapper');
 const addTeamButton = document.querySelector('.add-team-button');
 export const homeHowToPlayButton = document.querySelector('.home-screen-how-to-play-button');
 const homeContinueButton = document.querySelector('.home-screen-continue-button');
 const invalidInputMessage = document.querySelector('.teams-input-invalid-message');
 
-/* LOAD */
+/* LOAD 
 function loadHomeScreenTeams()
 {
     createdTeamsWrapper.innerHTML = '';
@@ -63,7 +142,7 @@ function generateTeamInput(teamArray, teamIndex)
     teamInput.classList.add('team-input');
     teamInput.dataset.teamIndex = teamIndex;
 
-    /* TEAM HEADER */
+    /* TEAM HEADER 
     const teamInputHeader = document.createElement('div');
     teamInputHeader.classList.add('team-input-header');
 
@@ -80,7 +159,7 @@ function generateTeamInput(teamArray, teamIndex)
 
     teamInputHeader.append(teamName, deleteTeamIcon);
 
-    /* TEAM INPUTS */
+    /* TEAM INPUTS 
     const playersInput = document.createElement('div');
     playersInput.classList.add('players-input-wrapper');
 
@@ -88,7 +167,7 @@ function generateTeamInput(teamArray, teamIndex)
         playersInput.appendChild(generatePlayerInput(teamIndex, playerName, playerIndex));
     })
 
-    /* ADD PLAYER BUTTON */
+    /* ADD PLAYER BUTTON 
     const addPlayerButton = document.createElement('button');
     addPlayerButton.classList.add('add-player-button');
     addPlayerButton.dataset.teamIndex = teamIndex;
@@ -106,7 +185,7 @@ function generateTeamInput(teamArray, teamIndex)
     addPlayerButton.append(addIcon, buttonSpan);
 
 
-    /* APPENDING */
+    /* APPENDING 
     teamInput.append(teamInputHeader, playersInput, addPlayerButton);
     return teamInput;
 }
@@ -142,9 +221,9 @@ function generatePlayerInput(teamIndex, playerName, playerIndex)
 
 
 
-/* ACTIONS */
+/* ACTIONS 
 
-/* event listeners */
+/* event listeners 
 addTeamButton.addEventListener('click', () => {
     addTeam();
 })
@@ -237,6 +316,6 @@ function removeErrorMessages()
 }
 
 
-/* CALLS */
-loadHomeScreenTeams();
+/* CALLS 
+loadHomeScreenTeams();*/
 

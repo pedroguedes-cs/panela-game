@@ -1,13 +1,59 @@
-import { gameState, saveGameState } from "./gameState.js";
-import { showScreen } from "./screenManager.js";
+import { GameEvents } from "../core/GameEvents.js";
 
 
-/* html elements */
+/*=====[HTML ELEMENTS]=====*/
+
+
+/*=====[INIT]=====*/
+function initSettingsScreen()
+{
+
+}
+
+/*=====[SETUP]=====*/
+function getElementsSettingsScreen()
+{
+
+}
+function addListenersSettingsScreen()
+{
+
+}
+
+/*=====[EVENT HANDLERS]=====*/
+function onTimeChange()
+{
+    
+}
+function onWordsPerPlayerChange()
+{
+
+}
+function onBackToTeams()
+{
+
+}
+function onContinue()
+{
+
+}
+
+/*=====[RENDER]=====*/
+function renderSettingsScreen()
+{
+
+}
+
+
+
+
+
+/* html elements 
 const settingsBackButton = document.querySelector('.settings-screen-back-button');
 const timerInput = document.getElementById('timer-input');
 const wordsPerPlayerInput = document.getElementById('words-per-player-input');
 
-/* event listeners */
+/* event listeners 
 timerInput.addEventListener('change', () => {
     gameState.settings.turnDuration = timerInput.value;
     saveGameState();
@@ -18,7 +64,7 @@ wordsPerPlayerInput.addEventListener('change', () => {
     saveGameState();
 })
 
-/* LOAD */
+/* LOAD 
 function loadSettings()
 {
     timerInput.value = gameState.settings.turnDuration;
@@ -26,8 +72,8 @@ function loadSettings()
 }
 
 
-/* SCREEN MANIPULATION */
+/* SCREEN MANIPULATION 
 settingsBackButton.addEventListener('click', () => {showScreen('home-screen')});
 
-/* CALLS */
-loadSettings();
+/* CALLS 
+loadSettings();*/

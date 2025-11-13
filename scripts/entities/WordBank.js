@@ -22,7 +22,12 @@ export class WordBank
         }
     }
 
-    /* LOGIC */
+    /*=====[LOGIC]=====*/
+    addWord(word)
+    {
+        this.#words.push(word);
+        this.#topIndex++;
+    }
     pickWord()
     {
         if (this.isEmpty() || this.allWordsGuessed())
@@ -63,11 +68,8 @@ export class WordBank
 
         this.#bottomIndex = 0;
     }
-    addWord(word)
-    {
-        this.#words.push(word);
-        this.#topIndex++;
-    }
+
+    /*=====[HELPERS]=====*/
     shuffleWords()
     {
         const size = this.#topIndex - this.#bottomIndex + 1;
@@ -89,7 +91,7 @@ export class WordBank
         return (this.#words.length === 0);
     }
 
-    /* LOCAL STORAGE */
+    /*=====[LOCAL STORAGE]=====*/
     toJSON()
     {
         return {

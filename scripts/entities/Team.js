@@ -15,7 +15,7 @@ export class Team
         this.#currentPlayerIndex = currentPlayerIndex;
     }
 
-    /* GETTERS */
+    /*=====[GETTERS]=====*/
     getPlayers()
     {
         return this.#players;
@@ -39,7 +39,7 @@ export class Team
         return this.#players[this.#currentPlayerIndex];
     }
 
-    /* LOGIC */
+    /*=====[LOGIC]=====*/
     addPlayer(player)
     {
         this.#players.push(player);
@@ -54,16 +54,6 @@ export class Team
 
         this.#players.splice(index, 1);
     }
-    setCurrentPlayerIndex(index)
-    {
-        if (index < 0 || index >= this.#players.length)
-        {
-            return false;
-        }
-
-        this.#currentPlayerIndex = index;
-        return true;
-    }
     incrementCurrentPlayerIndex()
     {
         if (this.#players.length === 0)
@@ -74,8 +64,6 @@ export class Team
         this.#currentPlayerIndex = (this.#currentPlayerIndex + 1) % this.#players.length;
         return true;
     }
-
-    /* HELPERS */
     isValidTeam()
     {
         const size = this.#players.length;
@@ -95,7 +83,7 @@ export class Team
         return true;
     }
 
-    /* LOCAL STORAGE */
+    /*=====[LOCAL STORAGE]=====*/
     toJSON()
     {
         return {

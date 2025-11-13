@@ -4,22 +4,14 @@ export class Player
 {
     #name = '';
     #words = [];
-    #speakerPoints = 0;
 
-    constructor(playerName = '', playerWords = [], speakerPoints = 0)
+    constructor(playerName = '', playerWords = [])
     {
         this.#name = playerName;
         this.#words = playerWords;
-        this.#speakerPoints = Math.max(0, speakerPoints);
     }
 
-    /* COPIES */
-    getWordsCopy()
-    {
-        return [...this.#words];
-    }
-
-    /* GETTERS */
+    /*=====[GETTERS]=====*/
     getName()
     {
         return this.#name;
@@ -28,12 +20,8 @@ export class Player
     {
         return this.#words;
     }
-    getSpeakerPoints()
-    {
-        return this.#speakerPoints;
-    }
 
-    /* SETTERS */
+    /*=====[SETTERS]=====*/
     setName(newName)
     {
         this.#name = newName;
@@ -70,13 +58,7 @@ export class Player
         return true;
     }
 
-    /* COUNT GETTERS */
-    getWordsCount()
-    {
-        return this.#words.length;
-    }
-
-    /* HELPERS */
+    /*=====[HELPERS]=====*/
     clearWords()
     {
         this.#words = [];
@@ -85,18 +67,13 @@ export class Player
     {
         return this.#words.some((word) => {return word === ''})
     }
-    incrementSpeakerPoint()
-    {
-        this.#speakerPoints++;
-    }
 
-    /* LOCAL STORAGE */
+    /*=====[LOCAL STORAGE]=====*/
     toJSON()
     {
         return {
             name: this.#name,
-            words: this.#words.map((word) => {return word.toJSON()}),
-            speakerPoints: this.#speakerPoints
+            words: this.#words.map((word) => {return word.toJSON()})
         }
     }
     static fromJSON(json)
@@ -107,6 +84,6 @@ export class Player
         }
 
         const wordsFromJSON = json.words.map((word) => {return Word.fromJSON(word)});
-        return new Player(json.name, wordsFromJSON, json.speakerPoints);
+        return new Player(json.name, wordsFromJSON);
     }
 }

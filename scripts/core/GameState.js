@@ -23,86 +23,75 @@ export class GameState
         this.#session = session;
     }
 
-    /* GETTERS */
+    /*=====[GETTERS]=====*/
     getTeams()
     {
         return this.#teams;
     }
-
     getWordBank()
     {
         return this.#wordBank;
     }
-
     getSettings()
     {
         return this.#settings;
     }
-
     getSession()
     {
         return this.#session;
     }
     
-
-    /* TEAM */
+    /*=====[TEAM]=====*/
     addTeam(team)
     {
         this.#teams.push(team);
     }
-
     deleteTeam(teamIndex)
     {
         this.#teams.splice(teamIndex, 1);
     }
 
-    /* PLAYER */
+    /*=====[PLAYER]=====*/
     addPlayer(teamIndex, player)
     {
         this.#teams[teamIndex].addPlayer(player);
     }
-
     deletePlayer(teamIndex, playerIndex)
     {
         this.#teams[teamIndex].deletePlayer(playerIndex);
     }
-
     setPlayerName(teamIndex, playerIndex, newName)
     {
         this.#teams[teamIndex].getPlayer(playerIndex).setName(newName);
     }
 
-    /* SETTINGS */
-    setTurnTime(turnTime)
-    {
-        this.#settings.setTurnTime(turnTime);
-    }
-
-    setWordsPerPlayer(wordsPerPlayer)
-    {
-        this.#settings.setWordsPerPlayer(wordsPerPlayer);
-    }
-
-    /* SESSION */
+    /*=====[SESSION]=====*/
     setScreenId(screenId)
     {
         this.#session.setScreenId(screenId);
     }
-
     setRemainingTurnTime(remainingTurnTime)
     {
         this.#session.setRemainingTurnTime(remainingTurnTime);
     }
 
-    /* SETTINGS */
+    /*=====[SETTINGS]=====*/
     goToSettings()
     {
         this.#teams.forEach((team) => {
             team.setCurrentPlayerIndex(0);
         })
     }
+    setTurnTime(turnTime)
+    {
+        this.#settings.setTurnTime(turnTime);
+    }
+    setWordsPerPlayer(wordsPerPlayer)
+    {
+        this.#settings.setWordsPerPlayer(wordsPerPlayer);
+    }
 
-    /* WORDS INPUT */
+    /*=====[WORDS INPUT]=====*/
     goToWordsInput()
     {
         this.#teams.forEach((team) => {
@@ -111,13 +100,12 @@ export class GameState
             })
         })
     }
-
     setPlayerWords(teamIndex, playerIndex, words)
     {
         this.#teams[teamIndex].getPlayers()[playerIndex].setWords(words);
     }
 
-    /* GAME */
+    /*=====[GAME]=====*/
     fillWordBank()
     {
         this.#teams.forEach((team) => {
@@ -169,7 +157,7 @@ export class GameState
         return;
     }
 
-    /* STORAGE */
+    /*=====[LOCAL STORAGE]=====*/
     saveGameState()
     {
         const gameStateToJSON = {
@@ -181,7 +169,6 @@ export class GameState
 
         localStorage.setItem('gameState', JSON.stringify(gameStateToJSON));
     }
-
     static loadGameState()
     {
         const gameStateFromStorage = JSON.parse(localStorage.getItem('gameState'));

@@ -12,6 +12,7 @@ export class Word
         this.#playerIndex = playerIndex;
     }
 
+    /*=====[GETTERS]=====*/
     getValue()
     {
         return this.#value;
@@ -20,6 +21,8 @@ export class Word
     {
         return this.#guessed;
     }
+
+    /*=====[SETTERS]=====*/
     setValue(value)
     {
         this.#value = value;
@@ -33,7 +36,7 @@ export class Word
         this.#guessed = false;
     }
 
-    /* LOCAL STORAGE */
+    /*=====[LOCAL STORAGE]=====*/
     toJSON()
     {
         return {
