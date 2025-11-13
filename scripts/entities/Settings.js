@@ -59,6 +59,11 @@ export class Settings
     }
     static fromJSON(json)
     {
+        if (!json)
+        {
+            return new Settings();
+        }
+
         return new Settings(json.turnTime, json.wordsPerPlayer);
     }
 }

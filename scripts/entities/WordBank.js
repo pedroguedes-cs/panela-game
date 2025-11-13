@@ -22,23 +22,25 @@ export class WordBank
         }
     }
 
-    /* GETTERS */
-    getWord()
+    /* LOGIC */
+    pickWord()
     {
-        if (this.isEmpty())
+        if (this.isEmpty() || this.allWordsGuessed())
         {
-            console.warn('Empty wordBank');
+            console.warn('Empty/all guessed wordBank');
             return null;
         }
 
         return this.#words[this.#topIndex];
     }
-    getWordsCount()
+    getRemainingWordsCount()
     {
         return this.#topIndex - this.#bottomIndex + 1;
     }
-
-    /* SETTERS */
+    getGuessedWordsCount()
+    {
+        return this.#bottomIndex;
+    }
     markAsGuessed()
     {
         if (this.allWordsGuessed())
@@ -61,8 +63,6 @@ export class WordBank
 
         this.#bottomIndex = 0;
     }
-
-    /* HELPERS */
     addWord(word)
     {
         this.#words.push(word);
@@ -99,6 +99,11 @@ export class WordBank
     }
     static fromJSON(json)
     {
+        if (!json)
+        {
+            return new WordBank();
+        }
+
         const wordsFromJSON = json.words.map((word) => {return Word.fromJSON(word)});
         return new WordBank(wordsFromJSON, json.bottomIndex);
     }

@@ -3,13 +3,13 @@ import { Screen } from "../core/Screen.js"
 export class Session
 {
     #screenId = Screen.HOME;
-    #round = 1;
+    #round = 0;
     #remainingTurnTime = 0;
 
-    constructor(screenId = Screen.HOME, round = 1, remainingTurnTime = 0)
+    constructor(screenId = Screen.HOME, round = 0, remainingTurnTime = 0)
     {
         this.#screenId = screenId;
-        this.#round = Math.max(1, round);
+        this.#round = Math.max(0, round);
         this.#remainingTurnTime = Math.max(0, remainingTurnTime);
     }
 
@@ -35,9 +35,9 @@ export class Session
 
     setRound(round)
     {
-        if (round <= 0)
+        if (round < 0)
         {
-            console.warn('Cant set a non-positive value to setRound');
+            console.warn('Cant set a negative value to setRound');
             return false;
         }
 
@@ -68,6 +68,11 @@ export class Session
     }
     static fromJSON(json)
     {
+        if (!json)
+        {
+            return new Session();
+        }
+
         return new Session(json.screenId, json.round, json.remainingTurnTime);
     }
 }

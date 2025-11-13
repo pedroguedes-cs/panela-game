@@ -44,6 +44,10 @@ export class Word
     }
     static fromJSON(json)
     {
+        if (!json)
+        {
+            return new Word();
+        }
         return new Word(json.value, json.teamIndex, json.playerIndex);
     }
 } 

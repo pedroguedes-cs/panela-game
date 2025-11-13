@@ -24,15 +24,9 @@ export class Player
     {
         return this.#name;
     }
-    getWord(index)
+    getWords()
     {
-        if (index < 0 || index >= this.#words.length)
-        {
-            console.warn(`getWord index out of bounds`);
-            return false;
-        }
-
-        return this.#words[index];
+        return this.#words;
     }
     getSpeakerPoints()
     {
@@ -59,6 +53,10 @@ export class Player
         }
 
         return true;
+    }
+    setWords(words)
+    {
+        this.#words = words;
     }
     setWord(word, index)
     {
@@ -103,6 +101,11 @@ export class Player
     }
     static fromJSON(json)
     {
+        if (!json)
+        {
+            return new Player();
+        }
+
         const wordsFromJSON = json.words.map((word) => {return Word.fromJSON(word)});
         return new Player(json.name, wordsFromJSON, json.speakerPoints);
     }

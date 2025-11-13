@@ -5,91 +5,41 @@ import { Turn } from "./Turn.js";
 export class Team 
 {
     #players = [];
-    #turnsStack = [];
     #score = [];
+    #currentPlayerIndex = 0;
 
-    constructor(players = [], turnsStack = [], score = [])
+    constructor(players = [], score = [], currentPlayerIndex = 0)
     {
         this.#players = players;
-        this.#turnsStack = turnsStack;
-        this.#score = score
-    }
-
-    /* COPIES */
-    getPlayersCopy()
-    {
-        return [...this.#players];
-    }
-    getPlaysCopy()
-    {
-        return [...this.#turnsStack];
-    }
-    getScoreCopy()
-    {
-        return [...this.#score];
+        this.#score = score;
+        this.#currentPlayerIndex = currentPlayerIndex;
     }
 
     /* GETTERS */
-    getPlayer(index)
+    getPlayers()
     {
-        if (index < 0 || index >= this.#players.length)
-        {
-            console.warn(`getPlayer index out of bounds`);
-            return false;
+        return this.#players;
+    }
+    getScore()
+    {
+        let teamTotalPoints = this.#score.reduce((acumulator, score) => {return acumulator += score}, 0)
+
+        return {
+            teamMembers: this.#players.map((player) => {return player.getName()}),
+            pointsPerRound: [...this.#score],
+            pointsTotal: teamTotalPoints
         }
-
-        return this.#players[index];
     }
-    getTurn(index)
+    getCurrentPlayerIndex()
     {
-        if (index < 0 || index >= this.#turnsStack.length)
-        {
-            console.warn(`getTurn index out of bounds`);
-            return false;
-        } 
-
-        return this.#turnsStack[index];
+        return this.#currentPlayerIndex;
     }
-    getScore(index)
+    getCurrentPlayer()
     {
-        if (index < 0 || index >= this.#score.length)
-        {
-            console.warn(`getScore index out of bounds`);
-            return false;
-        } 
-
-        return this.#score[index];
-    }
-    getTotalScore()
-    {
-        let totalScore = 0;
-
-        this.#score.forEach((roundScore) => {
-            totalScore += roundScore;
-        })
-
-        return totalScore;
-    }
-    getBestTurn()
-    {
-        if (this.#turnsStack.length === 0)
-        {
-            return false;
-        }
-
-        let bestTurn;
-
-        this.#turnsStack.forEach((turn, index) => {
-            if (index === 0 || turn.getPoints() > bestTurn.getPoints())
-            {
-                bestTurn = turn;
-            }
-        })
-
-        return bestTurn.getDataCopy();
+        return this.#players[this.#currentPlayerIndex];
     }
 
-    /* SETTERS */
+    /* LOGIC */
     addPlayer(player)
     {
         this.#players.push(player);
@@ -104,23 +54,25 @@ export class Team
 
         this.#players.splice(index, 1);
     }
-    addTurn(turn)
+    setCurrentPlayerIndex(index)
     {
-        this.#turnsStack.push(turn);
-    }
+        if (index < 0 || index >= this.#players.length)
+        {
+            return false;
+        }
 
-    /* COUNT GETTERS */
-    getPlayersCount()
-    {
-        return this.#players.length;
+        this.#currentPlayerIndex = index;
+        return true;
     }
-    getTurnsStackCount()
+    incrementCurrentPlayerIndex()
     {
-        return this.#turnsStack.length;
-    }
-    getScoreCount()
-    {
-        return this.#score.length;
+        if (this.#players.length === 0)
+        {
+            return false;
+        }
+
+        this.#currentPlayerIndex = (this.#currentPlayerIndex + 1) % this.#players.length;
+        return true;
     }
 
     /* HELPERS */
@@ -143,20 +95,23 @@ export class Team
         return true;
     }
 
-
     /* LOCAL STORAGE */
     toJSON()
     {
         return {
             players: this.#players.map((player) => {return player.toJSON()}),
-            turnsStack: this.#turnsStack.map((turn) => {return turn.toJSON()}),
-            score: this.#score
+            score: this.#score,
+            currentPlayerIndex: this.#currentPlayerIndex
         }
     }
     static fromJSON(json)
     {
+        if (!json)
+        {
+            return new Team();
+        }
+
         const playersFromJSON = json.players.map((player) => {return Player.fromJSON(player)});
-        const turnsStackFromJSON = json.turnsStack.map((turn) => {return Turn.fromJSON(turn)});
-        return new Team(playersFromJSON, turnsStackFromJSON, json.score);
+        return new Team(playersFromJSON, json.score, json.currentPlayerIndex);
     }
 }
