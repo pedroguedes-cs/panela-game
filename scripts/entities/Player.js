@@ -1,3 +1,5 @@
+import { Word } from "./Word.js";
+
 export class Player
 {
     #name = '';

@@ -21,6 +21,56 @@ export class GameState
         
     }
 
+    /* GETTERS */
+    getTeams();
+
+    getPlayersSequence();
+
+    getWordBank();
+
+    getSettings();
+
+    getSession();
+    
+
+    /* TEAM */
+    addTeam()
+
+    deleteTeam()
+
+    /* PLAYER */
+    addPlayer()
+
+    deletePlayer()
+
+    setPlayer()
+
+    /* SETTINGS */
+    setTimer();
+
+    setWordsPerPlayer();
+
+    /* WORDS INPUT */
+    setWords();
+
+    /* GAME */
+    startGame();
+
+    startRound();
+
+    startTurn();
+
+    newGame();
+
+    /* STATS */
+    getScore();
+
+    getStats();
+
+    /* STORAGE */
+    saveGameState();
+
+    loadGameState();
 }
 
 

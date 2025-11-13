@@ -1,3 +1,5 @@
+import { Player } from "./Player.js";
+
 export class PlayersSequence
 {
     #playersInOrder = [];
