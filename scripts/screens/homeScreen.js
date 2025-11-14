@@ -2,50 +2,72 @@ import { GameEvents } from "../core/GameEvents.js";
 
 
 /*=====[HTML ELEMENTS]=====*/
-
+let createdTeamsWrapper;
+let addTeamButton;
+let invalidInputMessage;
+let homeHowToPlayButton;
+let homeContinueButton;
 
 /*=====[INIT]=====*/
 function initHomeScreen()
 {
-    GameEvents.addEventListener('teamsUpdated', renderHomeScreen);
+    getElementsHomeScreen();
+    addListenersHomeScreen();
 }
 
 /*=====[SETUP]=====*/
 function getElementsHomeScreen()
 {
-    
+    createdTeamsWrapper = document.querySelector('.created-teams-wrapper');
+    addTeamButton = document.querySelector('.add-team-button');
+    invalidInputMessage = document.querySelector('.teams-input-invalid-message');
+    homeHowToPlayButton = document.querySelector('.home-screen-how-to-play-button');
+    homeContinueButton = document.querySelector('.home-screen-continue-button');  
 }
 function addListenersHomeScreen()
 {
+    addTeamButton.addEventListener('click', onAddTeam);
+    homeHowToPlayButton.addEventListener('click', onHowToPlay);
+    homeContinueButton.addEventListener('click', onContinue);
 
+    GameEvents.addEventListener('teamsUpdated', onTeamsUpdated); // Details: maxTeams = bool , maxPlayers = []
+    GameEvents.addEventListener('InvalidTeams', onInvalidTeams);
 }
 
 /*=====[EVENT HANDLERS]=====*/
 function onAddTeam()
 {
-
+    // TODO: game controller
 }
 function onDeleteTeam()
 {
-
+    // TODO: game controller
 }
 function onAddPlayer()
 {
-
+    // TODO: game controller
 }
 function onDeletePlayer()
 {
-
+    // TODO: game controller
 }
 function onPlayerInput()
 {
-
+    // TODO: game controller
 }
 function onHowToPlay()
 {
-
+    // TODO: game controller
 }
 function onContinue()
+{
+    // TODO: game controller
+}
+function onTeamsUpdated()
+{
+    renderHomeScreen();
+}
+function onInvalidTeams()
 {
 
 }

@@ -11,7 +11,13 @@
     <link rel="stylesheet" href="styles/menu/sidebar.css">
     <link rel="stylesheet" href="styles/screens/home.css">
     <link rel="stylesheet" href="styles/screens/settings.css">
-    <link rel="stylesheet" href="styles/screens/screenManager.css">
+    <link rel="stylesheet" href="styles/screens/wordsInput.css">
+    <link rel="stylesheet" href="styles/screens/roundBegin.css">
+    <link rel="stylesheet" href="styles/screens/passDevice.css">
+    <link rel="stylesheet" href="styles/screens/play.css">
+    <link rel="stylesheet" href="styles/screens/score.css">
+    <link rel="stylesheet" href="styles/screens/finalResult.css">
+    <link rel="stylesheet" href="styles/screens/showScreen.css">
 
 </head>
 <body>
@@ -176,6 +182,101 @@
         <div class="settings-screen-continue-button-wrapper">
             <button class="settings-screen-continue-button">Continue</button>
         </div>
+    </section>
+
+    <!-- WORDS INPUT SCREEN -->
+    <section id="words-input-screen">
+        <div class="words-input-header-wrapper">
+            <h1 class="words-input-header">WORDS INPUT</h1>
+            <p class="words-input-header-description"></p>
+        </div>
+
+        <div class="words-input-info">
+            <p class="words-input-team">Team <span class="words-input-team-counter">1</span></p>
+            <p class="words-input-player">Pedro</p>
+        </div>
+
+        <div class="words-input-wrapper"></div>
+
+        <button class="words-input-continue-button">Continue</button>
+    </section>
+
+    <!-- ROUND BEGIN SCREEN -->
+    <section id="round-begin-screen">
+        <button class="back-to-score-screen-button">Score</button>
+
+        <div class="round-begin-header-wrapper">
+            <h1 class="round-begin-header">ROUND <span class="round-begin-round-counter">1</span></h1>
+            <p class="round-begin-header-description">Explain freely (not the word itself)</p>
+        </div>
+
+        <button class="round-begin-continue-button">Continue</button>
+    </section>
+
+    <!-- PASS DEVICE SCREEN -->
+    <section id="pass-device-screen">
+        <button class="back-to-round-instructions-button">Round Instructions</button>
+
+        <div class="pass-device-instructions-wrapper">
+            <p class="pass-the-device-message">Pass the Device to:</p>
+            <h2 class="pass-device-team">Team <span class="pass-device-team-counter">1</span></h2>
+            <h1 class="pass-device-player">Pedro</h1>
+        </div>
+
+        <button class="pass-device-screen-continue-button">Continue</button>
+    </section>
+
+    <!-- PLAY SCREEN -->
+    <section id="play-screen">
+        <div class="play-turn-info-wrapper">
+            <p>R<span class="play-turn-info-round-counter">1</span>: <span class="play-turn-info-player">Pedro</span></p>
+        </div>
+
+        <div class="play-timer-wrapper">
+            <p class="play-timer">19</p>
+        </div>
+
+
+        <div class="play-word-wrapper">
+            <p class="play-word-message">The Words is:</p>
+            <h1 class="play-word">VIDEOGAME</h1>
+        </div>
+
+        <div class="play-correct-button-wrapper">
+            <button class="play-correct-button">Correct</button>
+        </div>
+
+        <div class="play-progress-bar-wrapper"></div>
+    </section>
+
+    <!-- SCORE SCREEN -->
+    <section id="score-screen">
+        <div class="score-header-wrapper">
+            <h1 class="score-header">SCORE</h1>
+        </div>
+
+        <div class="score-table"></div>
+
+
+        <button class="score-screen-continue-button">Continue</button>
+    </section>
+
+    <!-- FINAL RESULT SCREEN -->
+    <section id="final-result-screen">
+        <div class="final-result-header-wrapper">
+            <h1 class="final-result-header">FINAL RESULT</h1>
+        </div>
+        <div class="final-result-wrapper">
+            <p class="final-result">Congratulations,<br>Team <span class="final-result-team-counter">1</span></p>
+        </div>
+        <div class="final-result-table">
+
+        </div>
+        <div class="final-result-game-stats-wrapper">
+
+        </div>
+
+        <button class="final-result-new-game-button">New Game</button>
     </section>
 
     <!-- SCRIPTS -->

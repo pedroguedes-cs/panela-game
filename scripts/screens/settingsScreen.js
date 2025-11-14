@@ -2,34 +2,43 @@ import { GameEvents } from "../core/GameEvents.js";
 
 
 /*=====[HTML ELEMENTS]=====*/
-
+let settingsBackButton;
+let timerInput;
+let wordsPerPlayerInput;
+let settingsContinueButton;
 
 /*=====[INIT]=====*/
 function initSettingsScreen()
 {
-
+    getElementsSettingsScreen();
 }
 
 /*=====[SETUP]=====*/
 function getElementsSettingsScreen()
 {
-
+    settingsBackButton = document.querySelector('.settings-screen-back-button');
+    timerInput = document.getElementById('timer-input');
+    wordsPerPlayerInput = document.getElementById('words-per-player-input');
+    settingsContinueButton = document.querySelector('.settings-screen-continue-button');
 }
 function addListenersSettingsScreen()
 {
-
+    settingsBackButton.addEventListener('click', onBackToTeams);
+    timerInput.addEventListener('change', onTimerChange);
+    wordsPerPlayerInput.addEventListener('change', onWordsPerPlayerChange);
+    settingsContinueButton.addEventListener('click', onContinue);
 }
 
 /*=====[EVENT HANDLERS]=====*/
-function onTimeChange()
+function onBackToTeams()
+{
+
+}
+function onTimerChange()
 {
     
 }
 function onWordsPerPlayerChange()
-{
-
-}
-function onBackToTeams()
 {
 
 }

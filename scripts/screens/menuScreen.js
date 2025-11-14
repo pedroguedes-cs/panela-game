@@ -1,6 +1,3 @@
-import { homeHowToPlayButton } from "./homeScreen.js";
-
-
 /*=====[HTML ELEMENTS]=====*/
 let sidebar;
 let overlay;
@@ -11,8 +8,10 @@ let newGameButton;
 let confirmNewGameButton;
 let cancelNewGameButton;
 let aboutButton;
+let descriptionsButtons;
 let lightModeButton;
 let lightMode;
+let homeHowToPlayButton;
 
 /*=====[INIT]=====*/
 function initMenu()
@@ -35,7 +34,9 @@ function getElementsMenu()
     confirmNewGameButton = document.querySelector('.confirm-new-game-button');
     cancelNewGameButton = document.querySelector('.cancel-new-game-button');
     aboutButton = document.querySelector('.sidebar-about-button');
+    descriptionsButtons = [howToPlayButton, newGameButton, aboutButton];
     lightModeButton = document.querySelector('.lightmode-icon-wrapper');
+    homeHowToPlayButton = document.querySelector('.home-screen-how-to-play-button');
 }
 function addListenersMenu()
 {
@@ -43,9 +44,9 @@ function addListenersMenu()
     closeMenuButton.addEventListener('click', onToggleSidebar);
     document.addEventListener('click', (event) => {onClickOutsideSidebar(event.target)});
 
-    howToPlayButton.addEventListener('click', (event) => {onToggleDescription(event.target)});
-    newGameButton.addEventListener('click', (event) => {onToggleDescription(event.target)});
-    aboutButton.addEventListener('click', (event) => {onToggleDescription(event.target)});
+    descriptionsButtons.forEach((button) => {
+        button.addEventListener('click', (event) => {onToggleDescription(event.currentTarget)});
+    })
 
     confirmNewGameButton.addEventListener('click', onNewGame);
     cancelNewGameButton.addEventListener('click', onCancelNewGame);
@@ -56,7 +57,7 @@ function loadLightMode()
 {
     lightMode = JSON.parse(localStorage.getItem('lightMode'));
 
-    if (!lightMode)
+    if (lightMode === null)
     {
         lightMode = true;
     }
@@ -79,7 +80,7 @@ function onClickOutsideSidebar(target)
 }
 function onToggleDescription(target)
 {
-    toggleDescription();
+    toggleDescription(target);
 }
 function onCancelNewGame()
 {
@@ -87,7 +88,7 @@ function onCancelNewGame()
 }
 function onNewGame()
 {
-    // TODO
+    // TODO: game controller
 }
 function onToggleLightMode()
 {
@@ -105,9 +106,7 @@ function toggleSidebar()
         overlay.classList.remove('overlay-show');
         openMenuButton.classList.remove('hamburguer-menu-icon-wrapper-hidden');
 
-        howToPlayButton.querySelector('.sidebar-item-description').classList.remove('sidebar-item-description-open');
-        newGameButton.querySelector('.sidebar-item-description').classList.remove('sidebar-item-description-open');
-        aboutButton.querySelector('.sidebar-item-description').classList.remove('sidebar-item-description-open');
+        closeAllDescriptions();
     }
     else
     {
@@ -125,17 +124,19 @@ function toggleDescription(target)
         sidebarDescription.classList.toggle('sidebar-item-description-open');
     }
 }
+function closeAllDescriptions()
+{
+    descriptionsButtons.forEach((button) => {
+        const description = button.querySelector('.sidebar-item-description');
+        if (description)
+        {
+            description.classList.remove('sidebar-item-description-open');
+        }
+    })
+}
 function toggleLightMode()
 {
-    if (lightMode)
-    {
-        lightMode = false;
-    }
-    else
-    {
-        lightMode = true;
-    }
-
+    lightMode = !lightMode;
     saveLightMode();
     applyLightMode();
 }

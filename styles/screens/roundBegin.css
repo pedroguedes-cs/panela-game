@@ -1,0 +1,9 @@
+#round-begin-screen
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: stretch;
+    gap: 3rem;
+    border: blue solid 1rem;
+}
