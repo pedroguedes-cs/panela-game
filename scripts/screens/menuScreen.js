@@ -40,18 +40,18 @@ function getElementsMenu()
 }
 function addListenersMenu()
 {
-    openMenuButton.addEventListener('click', onToggleSidebar);
-    closeMenuButton.addEventListener('click', onToggleSidebar);
-    document.addEventListener('click', (event) => {onClickOutsideSidebar(event.target)});
+    openMenuButton.addEventListener('click', toggleSidebar);
+    closeMenuButton.addEventListener('click', toggleSidebar);
+    document.addEventListener('click', (event) => {clickOutsideSidebar(event.target)});
 
     descriptionsButtons.forEach((button) => {
-        button.addEventListener('click', (event) => {onToggleDescription(event.currentTarget)});
+        button.addEventListener('click', (event) => {toggleDescription(event.currentTarget)});
     })
 
     confirmNewGameButton.addEventListener('click', onNewGame);
-    cancelNewGameButton.addEventListener('click', onCancelNewGame);
+    cancelNewGameButton.addEventListener('click', () => {toggleDescription(newGameButton)});
 
-    lightModeButton.addEventListener('click', onToggleLightMode)
+    lightModeButton.addEventListener('click', toggleLightMode)
 }
 function loadLightMode()
 {
@@ -64,36 +64,11 @@ function loadLightMode()
 }
 
 /*=====[EVENT HANDLERS]=====*/
-function onToggleSidebar()
-{
-    toggleSidebar();
-}
-function onClickOutsideSidebar(target)
-{
-    const sidebarIsOpen = sidebar.classList.contains('sidebar-open');
-    const clickInside = sidebar.contains(target) || openMenuButton.contains(target) || homeHowToPlayButton.contains(target);
-
-    if (sidebarIsOpen && !clickInside)
-    {
-        toggleSidebar();
-    }
-}
-function onToggleDescription(target)
-{
-    toggleDescription(target);
-}
-function onCancelNewGame()
-{
-    toggleDescription(newGameButton)
-}
 function onNewGame()
 {
     // TODO: game controller
 }
-function onToggleLightMode()
-{
-    toggleLightMode();
-}
+
 
 /*=====[UI ACTIONS]=====*/
 function toggleSidebar()
@@ -133,6 +108,16 @@ function closeAllDescriptions()
             description.classList.remove('sidebar-item-description-open');
         }
     })
+}
+function clickOutsideSidebar(target)
+{
+    const sidebarIsOpen = sidebar.classList.contains('sidebar-open');
+    const clickInside = sidebar.contains(target) || openMenuButton.contains(target) || homeHowToPlayButton.contains(target);
+
+    if (sidebarIsOpen && !clickInside)
+    {
+        toggleSidebar();
+    }
 }
 function toggleLightMode()
 {

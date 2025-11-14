@@ -5,10 +5,10 @@ export class Player
     #name = '';
     #words = [];
 
-    constructor(playerName = '', playerWords = [])
+    constructor(playerName = '', wordsInstances = [])
     {
         this.#name = playerName;
-        this.#words = playerWords;
+        this.#words = wordsInstances;
     }
 
     /*=====[GETTERS]=====*/
@@ -37,16 +37,12 @@ export class Player
         
         for (let i = 0; i < size; i++)
         {
-            this.#words.push('');
+            this.#words.push(new Word());
         }
 
         return true;
     }
-    setWords(words)
-    {
-        this.#words = words;
-    }
-    setWord(word, index)
+    setWordValue(value, index)
     {
         if (index < 0 || index >= this.#words.length)
         {
@@ -54,7 +50,7 @@ export class Player
             return false;
         }
 
-        this.#words[index] = word;
+        this.#words[index].setValue(value);
         return true;
     }
 
@@ -65,7 +61,7 @@ export class Player
     }
     hasEmptyWords()
     {
-        return this.#words.some((word) => {return word === ''})
+        return this.#words.some((word) => {return word.getValue() === ''})
     }
 
     /*=====[LOCAL STORAGE]=====*/
@@ -83,7 +79,8 @@ export class Player
             return new Player();
         }
 
-        const wordsFromJSON = json.words.map((word) => {return Word.fromJSON(word)});
+        const wordsFromJSON = json.words.map((word) => {return Word.fromJSON(word)})
+
         return new Player(json.name, wordsFromJSON);
     }
 }

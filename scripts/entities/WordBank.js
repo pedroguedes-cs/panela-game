@@ -6,13 +6,13 @@ export class WordBank
     #topIndex = 0;
     #bottomIndex = 0;
 
-    constructor(words = [], bottomIndex = 0)
+    constructor(wordsFromJSON = [], bottomIndex = 0)
     {
-        this.#words = words;
+        this.#words = wordsFromJSON;
 
-        this.#topIndex = words.length;
+        this.#topIndex = wordsFromJSON.length - 1;
 
-        if (bottomIndex >= words.length || bottomIndex < 0)
+        if (bottomIndex >= wordsFromJSON.length || bottomIndex < 0)
         {
             this.#bottomIndex = 0;
         }
@@ -23,16 +23,17 @@ export class WordBank
     }
 
     /*=====[LOGIC]=====*/
-    addWord(word)
+    addWord(wordValue)
     {
-        this.#words.push(word);
+        const newWord = new Word(wordValue)
+        this.#words.push(newWord);
         this.#topIndex++;
     }
     pickWord()
     {
-        if (this.isEmpty() || this.allWordsGuessed())
+        if (this.allWordsGuessed())
         {
-            console.warn('Empty/all guessed wordBank');
+            console.warn('All guessed wordBank');
             return null;
         }
 
@@ -85,10 +86,6 @@ export class WordBank
     allWordsGuessed()
     {
         return (this.#bottomIndex > this.#topIndex);
-    }
-    isEmpty()
-    {
-        return (this.#words.length === 0);
     }
 
     /*=====[LOCAL STORAGE]=====*/

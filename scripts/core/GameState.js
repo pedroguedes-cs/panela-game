@@ -2,7 +2,6 @@ import { GAME_CONSTANTS } from "./GameConstants.js";
 import { Screen } from "./Screen.js";
 import { Team } from "../entities/Team.js";
 import { Player } from "../entities/Player.js";
-import { PlayersSequence } from "../entities/PlayersSequence.js";
 import { WordBank } from "../entities/WordBank.js";
 import { Settings } from "../entities/Settings.js";
 import { Session } from "../entities/Session.js";
@@ -15,43 +14,98 @@ export class GameState
     #settings = null;
     #session = null;
 
-    constructor(teams = [], wordBank = null, settings = null, session = null)
+    constructor(teamInstances = [], wordBankInstance = null, settingInstance = null, sessionInstance = null)
     {
-        this.#teams = teams;
-        this.#wordBank = wordBank;
-        this.#settings = settings;
-        this.#session = session;
+        this.#teams = teamInstances;
+        this.#wordBank = wordBankInstance;
+        this.#settings = settingInstance;
+        this.#session = sessionInstance;
+
+        if (teamInstances.length === 0)
+        {
+            this.addTeam();
+        }
+        if (!wordBankInstance)
+        {
+            this.#wordBank = new WordBank();
+        }
+        if (!settingInstance)
+        {
+            this.#settings = new Settings();
+        }
+        if (!sessionInstance)
+        {
+            this.#session = new Session();
+        }
     }
 
-    /*=====[GETTERS]=====*/
-    getTeams()
+    /*=====[GETTERS COPY]=====*/
+    getTeamsCopy()
     {
-        return this.#teams;
+
     }
-    getWordBank()
+    getSettingsCopy()
     {
-        return this.#wordBank;
+
     }
-    getSettings()
+    getSessionCopy()
     {
-        return this.#settings;
+
     }
-    getSession()
+
+    /*=====[SESSION]=====*/
+    setScreenId(screenId)
     {
-        return this.#session;
+        this.#session.setScreenId(screenId);
     }
+    setRemainingTurnTime(remainingTurnTime)
+    {
+        this.#session.setRemainingTurnTime(remainingTurnTime);
+    }
+
+    /*=====[HOME]=====*/
+    addTeam()
+    {
+
+    }
+    deleteTeam()
+    {
+
+    }
+    addPlayer()
+    {
+
+    }
+    deletePlayer()
+    {
+
+    }
+    renamePlayer()
+    {
+        
+    }
+
+    /*=====[SETTINGS]=====*/
+    /*=====[WORD INPUT]=====*/
+    /*=====[ROUND]=====*/
+    /*=====[TURN]=====*/
+    /*=====[SCORE]=====*/
+    /*=====[NEW GAME]=====*/
+
+
     
-    /*=====[TEAM]=====*/
-    addTeam(team)
+    
+    /*=====[TEAM]=====
+    addTeam()
     {
-        this.#teams.push(team);
+        this.#teams.push([]);
     }
     deleteTeam(teamIndex)
     {
         this.#teams.splice(teamIndex, 1);
     }
 
-    /*=====[PLAYER]=====*/
+    /*=====[PLAYER]=====
     addPlayer(teamIndex, player)
     {
         this.#teams[teamIndex].addPlayer(player);
@@ -65,7 +119,15 @@ export class GameState
         this.#teams[teamIndex].getPlayer(playerIndex).setName(newName);
     }
 
-    /*=====[SESSION]=====*/
+    /*=====[SESSION]=====
+    getScreenId()
+    {
+        return this.#session.getScreenId();
+    }
+    getRemainingTurnTime()
+    {
+        return this.#session.getRemainingTurnTime();
+    }
     setScreenId(screenId)
     {
         this.#session.setScreenId(screenId);
@@ -75,7 +137,7 @@ export class GameState
         this.#session.setRemainingTurnTime(remainingTurnTime);
     }
 
-    /*=====[SETTINGS]=====*/
+    /*=====[SETTINGS]=====
     goToSettings()
     {
         this.#teams.forEach((team) => {
@@ -91,7 +153,7 @@ export class GameState
         this.#settings.setWordsPerPlayer(wordsPerPlayer);
     }
 
-    /*=====[WORDS INPUT]=====*/
+    /*=====[WORDS INPUT]=====
     goToWordsInput()
     {
         this.#teams.forEach((team) => {
@@ -105,7 +167,7 @@ export class GameState
         this.#teams[teamIndex].getPlayers()[playerIndex].setWords(words);
     }
 
-    /*=====[GAME]=====*/
+    /*=====[GAME]=====
     fillWordBank()
     {
         this.#teams.forEach((team) => {
@@ -130,7 +192,7 @@ export class GameState
     }
     endTurn()
     {
-        /* TODO: SESSION DATA */
+        /* TODO: SESSION DATA 
         return;
     }
     pickWord()
@@ -153,9 +215,9 @@ export class GameState
     }
     newGame()
     {
-        /* TODO: RESET THINGS */
+        /* TODO: RESET THINGS 
         return;
-    }
+    }*/
 
     /*=====[LOCAL STORAGE]=====*/
     saveGameState()

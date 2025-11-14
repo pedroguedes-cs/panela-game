@@ -1,5 +1,8 @@
 import { GAME_CONSTANTS } from "./GameConstants.js";
+import { GameState } from "./GameState.js";
+import { GameEvents } from "./GameEvents.js";
 import { Screen } from "./Screen.js";
+import { Player } from "../entities/Player.js";
 
 export class GameController
 {
@@ -10,13 +13,80 @@ export class GameController
         this.#gameState = gameState;
     }
 
-    /* GETTERS */
-    getGameState()
+    /*=====[HOME]=====*/
+    getTeamsInfo()
     {
-        return this.#gameState;
+
+    }
+    /*
+    getTeamsWithMaxPlayers()
+    {
+
+    }
+    getInvalidTeams()
+    {
+
+    }
+    hasEnoughTeams()
+    {
+
+    }
+    hasMaxTeams()
+    {
+
+    }*/
+    tryAddTeam()
+    {
+
+    }
+    tryDeleteTeam()
+    {
+
+    }
+    tryAddPlayer()
+    {
+
+    }
+    tryDeletePlayer()
+    {
+
+    }
+    tryRenamePlayer()
+    {
+
+    }
+    tryGoSettings()
+    {
+
     }
 
-    /* SCREEN MANIPULATION */
+
+    /*=====[SETTINGS]=====*/
+    getSettingsInfo()
+    {
+        
+    }
+    trySetTurnTime()
+    {
+
+    }
+    trySetWordsPerPlayer()
+    {
+
+    }
+    tryGoBackHome()
+    {
+
+    }
+    tryGoWordsInput()
+    {
+
+    }
+
+    /*=====[WORDS INPUT]=====*/
+
+
+    /*=====[SCREEN MANAGER]=====*/
     showScreen(screenId)
     {
         document.querySelectorAll('section:not(.section-hidden)').forEach((section) => {

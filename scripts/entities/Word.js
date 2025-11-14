@@ -1,15 +1,12 @@
 export class Word
 {
     #value = '';
-    #teamIndex = null;
-    #playerIndex = null;
     #guessed = false;
 
-    constructor(value = '', teamIndex = null, playerIndex = null)
+    constructor(value = '', guessed = false)
     {
         this.#value = value;
-        this.#teamIndex = teamIndex;
-        this.#playerIndex = playerIndex;
+        this.#guessed = guessed;
     }
 
     /*=====[GETTERS]=====*/
@@ -41,8 +38,7 @@ export class Word
     {
         return {
             value: this.#value,
-            teamIndex: this.#teamIndex,
-            playerIndex: this.#playerIndex
+            guessed: this.#guessed
         }
     }
     static fromJSON(json)
@@ -51,6 +47,6 @@ export class Word
         {
             return new Word();
         }
-        return new Word(json.value, json.teamIndex, json.playerIndex);
+        return new Word(json.value, json.guessed);
     }
 } 

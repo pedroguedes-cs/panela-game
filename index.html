@@ -246,7 +246,11 @@
             <button class="play-correct-button">Correct</button>
         </div>
 
-        <div class="play-progress-bar-wrapper"></div>
+        <div class="play-progress-bar-wrapper">
+            <p class="play-progress-bar-text">ROUND <span class="play-progress-bar-text-round-counter">1</span> [ <span class="play-progress-bar-guessed-words">11</span> / <span class="play-progress-bar-total-words">15</span> ]</p>
+
+            <div class="play-progress-bar"><div class="play-progress-bar-progress"></div></div>
+        </div>
     </section>
 
     <!-- SCORE SCREEN -->
@@ -295,8 +299,14 @@
     <script type="module" src="scripts/entities/Word.js"></script>
     <script type="module" src="scripts/entities/WordBank.js"></script>
 
+    <script type="module" src="scripts/screens/finalResultScreen.js"></script>
     <script type="module" src="scripts/screens/homeScreen.js"></script>
     <script type="module" src="scripts/screens/menuScreen.js"></script>
+    <script type="module" src="scripts/screens/passDeviceScreen.js"></script>
+    <script type="module" src="scripts/screens/playScreen.js"></script>
+    <script type="module" src="scripts/screens/roundBeginScreen.js"></script>
+    <script type="module" src="scripts/screens/scoreScreen.js"></script>
     <script type="module" src="scripts/screens/settingsScreen.js"></script>
+    <script type="module" src="scripts/screens/wordsInputScreen.js"></script>
 </body>
 </html>

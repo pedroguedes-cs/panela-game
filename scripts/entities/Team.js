@@ -1,5 +1,4 @@
 import { Player } from "./Player.js";
-import { Turn } from "./Turn.js";
 
 
 export class Team 
@@ -8,11 +7,16 @@ export class Team
     #score = [];
     #currentPlayerIndex = 0;
 
-    constructor(players = [], score = [], currentPlayerIndex = 0)
+    constructor(playersInstances = [], score = [], currentPlayerIndex = 0)
     {
-        this.#players = players;
+        this.#players = playersInstances;
         this.#score = score;
         this.#currentPlayerIndex = currentPlayerIndex;
+
+        if (playersInstances.length === 0)
+        {
+            this.addPlayer();
+        }
     }
 
     /*=====[GETTERS]=====*/
@@ -40,9 +44,10 @@ export class Team
     }
 
     /*=====[LOGIC]=====*/
-    addPlayer(player)
+    addPlayer(playerName = '')
     {
-        this.#players.push(player);
+        const newPlayer = new Player(playerName);
+        this.#players.push(newPlayer);
     }
     deletePlayer(index)
     {
@@ -62,24 +67,6 @@ export class Team
         }
 
         this.#currentPlayerIndex = (this.#currentPlayerIndex + 1) % this.#players.length;
-        return true;
-    }
-    isValidTeam()
-    {
-        const size = this.#players.length;
-        if (size < LIMITS.MIN_PLAYERS_PER_TEAM || size > MAX_PLAYERS_PER_TEAM)
-        {
-            console.log('team size invalid');
-            return false;
-        }
-
-        const hasEmptyPlayers = this.#players.some((player) => {return player.getName() === ''})
-        if (hasEmptyPlayers)
-        {
-            console.log('team has empty player name');
-            return false;   
-        }
-
         return true;
     }
 
