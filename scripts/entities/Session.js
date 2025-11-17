@@ -4,12 +4,16 @@ export class Session
 {
     #screenId = Screen.HOME;
     #round = 0;
+    #teamIndex = 0;
+    #playerIndex = 0;
     #remainingTurnTime = 0;
 
-    constructor(screenId = Screen.HOME, round = 0, remainingTurnTime = 0)
+    constructor(screenId = Screen.HOME, round = 0, teamIndex = 0, playerIndex = 0, remainingTurnTime = 0)
     {
         this.#screenId = screenId;
         this.#round = Math.max(0, round);
+        this.#teamIndex = Math.max(0, teamIndex);
+        this.#playerIndex = Math.max(0, playerIndex);
         this.#remainingTurnTime = Math.max(0, remainingTurnTime);
     }
 
@@ -21,6 +25,14 @@ export class Session
     getRound()
     {
         return this.#round;
+    }
+    getTeamIndex()
+    {
+        return this.#teamIndex;
+    }
+    getPlayerIndex()
+    {
+        return this.#playerIndex;
     }
     getRemainingTurnTime()
     {
@@ -43,6 +55,28 @@ export class Session
         this.#round = round;
         return true
     }
+    setTeamIndex(teamIndex)
+    {
+        if (teamIndex < 0)
+        {
+            console.warn('Cant set a negative value to setTeamIndex');
+            return false;
+        }
+
+        this.#teamIndex = teamIndex;
+        return true
+    }
+    setPlayerIndex(playerIndex)
+    {
+        if (playerIndex < 0)
+        {
+            console.warn('Cant set a negative value to setPlayerIndex');
+            return false;
+        }
+
+        this.#playerIndex = playerIndex;
+        return true
+    }
     setRemainingTurnTime(remainingTurnTime)
     {
         if (remainingTurnTime < 0)
@@ -61,6 +95,8 @@ export class Session
         return {
             screenId: this.#screenId,
             round: this.#round,
+            teamIndex: this.#teamIndex,
+            playerIndex: this.#playerIndex,
             remainingTurnTime: this.#remainingTurnTime
         }
     }
@@ -71,6 +107,6 @@ export class Session
             return new Session();
         }
 
-        return new Session(json.screenId, json.round, json.remainingTurnTime);
+        return new Session(json.screenId, json.round, json.teamIndex, json.playerIndex, json.remainingTurnTime);
     }
 }

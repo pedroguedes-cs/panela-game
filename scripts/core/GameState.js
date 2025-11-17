@@ -42,15 +42,24 @@ export class GameState
     /*=====[GETTERS COPY]=====*/
     getTeamsCopy()
     {
-
+        return this.#teams.map((team) => {return team.getPlayers().map((player) => {return player.getName()})});
     }
     getSettingsCopy()
     {
-
+        return {
+            turnTime: this.#settings.getTurnTime(),
+            wordsPerPlayer: this.#settings.getWordsPerPlayer()
+        }
     }
     getSessionCopy()
     {
-
+        return {
+            screenId: this.#session.getScreenId(),
+            round: this.#session.getRound(),
+            teamIndex: this.#session.getTeamIndex(),
+            playerIndex: this.#session.getPlayerIndex(),
+            remainingTurnTime: this.#session.getRemainingTurnTime()
+        }
     }
 
     /*=====[SESSION]=====*/
