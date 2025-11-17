@@ -124,6 +124,14 @@ export class GameState
     {
         this.#settings.setWordsPerPlayer(wordsPerPlayer);
     }
+    goToWordsInput()
+    {
+        this.#teams.forEach((team) => {
+            team.getPlayers.forEach((player) => {
+                player.setWordsSize(this.#settings.getWordsPerPlayer())
+            })
+        })
+    }
 
     /*=====[WORD INPUT]=====*/
     /*=====[ROUND]=====*/
