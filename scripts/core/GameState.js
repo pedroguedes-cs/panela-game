@@ -67,6 +67,18 @@ export class GameState
     {
         this.#session.setScreenId(screenId);
     }
+    setCurrentRound(round)
+    {
+        this.#session.setRound(round);
+    }
+    setCurrentTeamIndex(teamIndex)
+    {
+        this.#session.setTeamIndex(teamIndex);
+    }
+    setCurrentPlayerIndex(playerIndex)
+    {
+        this.#session.setPlayerIndex(playerIndex);
+    }
     setRemainingTurnTime(remainingTurnTime)
     {
         this.#session.setRemainingTurnTime(remainingTurnTime);
@@ -79,41 +91,20 @@ export class GameState
     }
     deleteTeam(teamIndex)
     {
-        if (teamIndex < 0 || teamIndex >= this.#teams.length)
-        {
-            return false;
-        }
-
         this.#teams.splice(teamIndex, 1);
         this.ensureAtLeastOneTeam();
     }
     addPlayer(teamIndex)
     {
-        if (teamIndex < 0 || teamIndex >= this.#teams.length)
-        {
-            return false;
-        }
-
         this.#teams[teamIndex].addPlayer();
     }
     deletePlayer(teamIndex, playerIndex)
     {
-        if (teamIndex < 0 || teamIndex >= this.#teams.length)
-        {
-            return false;
-        }
-
         this.#teams[teamIndex].deletePlayer(playerIndex);
         this.#teams[teamIndex].ensureAtLeastOnePlayer();
-        return true;
     }
     renamePlayer(teamIndex, playerIndex, newName)
     {
-        if (teamIndex < 0 || teamIndex >= this.#teams.length || playerIndex < 0 || playerIndex >= this.#teams[teamIndex].getPlayers().length)
-        {
-            return false;
-        }
-
         this.#teams[teamIndex].getPlayers()[playerIndex].setName(newName);
     }
     ensureAtLeastOneTeam()
@@ -125,6 +116,15 @@ export class GameState
     }
 
     /*=====[SETTINGS]=====*/
+    setTurnTime(turnTime)
+    {
+        this.#settings.setTurnTime(turnTime);
+    }
+    setWordsPerPlayer(wordsPerPlayer)
+    {
+        this.#settings.setWordsPerPlayer(wordsPerPlayer);
+    }
+
     /*=====[WORD INPUT]=====*/
     /*=====[ROUND]=====*/
     /*=====[TURN]=====*/
@@ -134,63 +134,7 @@ export class GameState
 
     
     
-    /*=====[TEAM]=====
-    addTeam()
-    {
-        this.#teams.push([]);
-    }
-    deleteTeam(teamIndex)
-    {
-        this.#teams.splice(teamIndex, 1);
-    }
 
-    /*=====[PLAYER]=====
-    addPlayer(teamIndex, player)
-    {
-        this.#teams[teamIndex].addPlayer(player);
-    }
-    deletePlayer(teamIndex, playerIndex)
-    {
-        this.#teams[teamIndex].deletePlayer(playerIndex);
-    }
-    setPlayerName(teamIndex, playerIndex, newName)
-    {
-        this.#teams[teamIndex].getPlayer(playerIndex).setName(newName);
-    }
-
-    /*=====[SESSION]=====
-    getScreenId()
-    {
-        return this.#session.getScreenId();
-    }
-    getRemainingTurnTime()
-    {
-        return this.#session.getRemainingTurnTime();
-    }
-    setScreenId(screenId)
-    {
-        this.#session.setScreenId(screenId);
-    }
-    setRemainingTurnTime(remainingTurnTime)
-    {
-        this.#session.setRemainingTurnTime(remainingTurnTime);
-    }
-
-    /*=====[SETTINGS]=====
-    goToSettings()
-    {
-        this.#teams.forEach((team) => {
-            team.setCurrentPlayerIndex(0);
-        })
-    }
-    setTurnTime(turnTime)
-    {
-        this.#settings.setTurnTime(turnTime);
-    }
-    setWordsPerPlayer(wordsPerPlayer)
-    {
-        this.#settings.setWordsPerPlayer(wordsPerPlayer);
-    }
 
     /*=====[WORDS INPUT]=====
     goToWordsInput()
