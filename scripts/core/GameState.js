@@ -75,23 +75,53 @@ export class GameState
     /*=====[HOME]=====*/
     addTeam()
     {
-
+        this.#teams.push(new Team());
     }
-    deleteTeam()
+    deleteTeam(teamIndex)
     {
+        if (teamIndex < 0 || teamIndex >= this.#teams.length)
+        {
+            return false;
+        }
 
+        this.#teams.splice(teamIndex, 1);
+        this.ensureAtLeastOneTeam();
     }
-    addPlayer()
+    addPlayer(teamIndex)
     {
+        if (teamIndex < 0 || teamIndex >= this.#teams.length)
+        {
+            return false;
+        }
 
+        this.#teams[teamIndex].addPlayer();
     }
-    deletePlayer()
+    deletePlayer(teamIndex, playerIndex)
     {
+        if (teamIndex < 0 || teamIndex >= this.#teams.length)
+        {
+            return false;
+        }
 
+        this.#teams[teamIndex].deletePlayer(playerIndex);
+        this.#teams[teamIndex].ensureAtLeastOnePlayer();
+        return true;
     }
-    renamePlayer()
+    renamePlayer(teamIndex, playerIndex, newName)
     {
-        
+        if (teamIndex < 0 || teamIndex >= this.#teams.length || playerIndex < 0 || playerIndex >= this.#teams[teamIndex].getPlayers().length)
+        {
+            return false;
+        }
+
+        this.#teams[teamIndex].getPlayers()[playerIndex].setName(newName);
+    }
+    ensureAtLeastOneTeam()
+    {
+        if (this.#teams.length === 0)
+        {
+            this.addTeam();
+        }
     }
 
     /*=====[SETTINGS]=====*/

@@ -69,6 +69,13 @@ export class Team
         this.#currentPlayerIndex = (this.#currentPlayerIndex + 1) % this.#players.length;
         return true;
     }
+    ensureAtLeastOnePlayer()
+    {
+        if (this.#players.length === 0)
+        {
+            this.addPlayer();
+        }
+    }
 
     /*=====[LOCAL STORAGE]=====*/
     toJSON()
