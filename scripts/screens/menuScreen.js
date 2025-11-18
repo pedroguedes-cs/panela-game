@@ -48,8 +48,18 @@ function addListenersMenu()
         button.addEventListener('click', (event) => {toggleDescription(event.currentTarget)});
     })
 
-    confirmNewGameButton.addEventListener('click', onNewGame);
-    cancelNewGameButton.addEventListener('click', () => {toggleDescription(newGameButton)});
+    confirmNewGameButton.addEventListener('click', (event) => {
+        
+        event.stopPropagation();
+        onNewGame();
+
+    })
+    cancelNewGameButton.addEventListener('click', (event) => {
+        
+        event.stopPropagation();
+        toggleDescription(newGameButton)
+
+    })
 
     lightModeButton.addEventListener('click', toggleLightMode);
 

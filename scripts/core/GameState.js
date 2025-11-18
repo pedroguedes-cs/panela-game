@@ -127,7 +127,7 @@ export class GameState
     goToWordsInput()
     {
         this.#teams.forEach((team) => {
-            team.getPlayers.forEach((player) => {
+            team.getPlayers().forEach((player) => {
                 player.setWordsSize(this.#settings.getWordsPerPlayer())
             })
         })
