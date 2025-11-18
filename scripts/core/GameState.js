@@ -1,5 +1,5 @@
 import { GAME_CONSTANTS } from "./GameConstants.js";
-import { Screen } from "./Screen.js";
+import { SCREENS } from "./Screens.js";
 import { Team } from "../entities/Team.js";
 import { Player } from "../entities/Player.js";
 import { WordBank } from "../entities/WordBank.js";

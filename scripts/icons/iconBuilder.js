@@ -1,22 +1,9 @@
-import { icons } from "./icons.js";
+import { ICONS } from "./Icons.js";
 
-function getIconByName(iconName)
+
+export function icon(iconFromIconsBank, iconClassList = [])
 {
-    const icon = icons[iconName];
-
-    if (!icon)
-    {
-        console.warn(`'${iconName}' icon not found`);
-        return null;
-    }
-
-    return icon;
-
-}
-
-function createSVG(icon, iconClassList = [])
-{
-    if (!icon)
+    if (!iconFromIconsBank)
     {
         console.warn(`Cant create a icon from null`);
         return null;
@@ -26,18 +13,13 @@ function createSVG(icon, iconClassList = [])
     const svg = document.createElementNS(svgNamespace, 'svg');
 
     svg.setAttribute('xmlns', svgNamespace);
-    svg.setAttribute('viewBox', icon.viewBox);
+    svg.setAttribute('viewBox', iconFromIconsBank.viewBox);
     const path = document.createElementNS(svgNamespace, 'path');
-    path.setAttribute("d", icon.path);
+    path.setAttribute("d", iconFromIconsBank.path);
     svg.appendChild(path);
 
     iconClassList.forEach((iconClass) => {svg.classList.add(iconClass)})
 
     return svg;
-}
-
-export function icon(iconName, iconClassList = [])
-{
-    return createSVG(getIconByName(iconName), iconClassList);
 }
 

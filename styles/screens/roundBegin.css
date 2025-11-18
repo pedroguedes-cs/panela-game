@@ -1,6 +1,6 @@
 #round-begin-screen
 {
-    display: flex;
+    /*display: flex; [screenManager.css]*/ 
     flex-direction: column;
     justify-content: space-evenly;
     align-items: stretch;

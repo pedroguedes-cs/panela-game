@@ -1,6 +1,6 @@
 #final-result-screen
 {
-    display: flex;
+    /*display: flex; [screenManager.css]*/ 
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;

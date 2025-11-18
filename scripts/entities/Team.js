@@ -93,7 +93,13 @@ export class Team
             return new Team();
         }
 
-        const playersFromJSON = json.players.map((player) => {return Player.fromJSON(player)});
+        let playersFromJSON = [];
+
+        if (Array.isArray(json.players))
+        {
+            playersFromJSON = json.players.map((player) => {return Player.fromJSON(player)});
+        }
+
         return new Team(playersFromJSON, json.score, json.currentPlayerIndex);
     }
 }

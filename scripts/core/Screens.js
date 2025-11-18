@@ -1,4 +1,4 @@
-export const Screen = {
+export const SCREENS = {
     HOME: 'home-screen',
     SETTINGS: 'settings-screen',
     WORDS_INPUT: 'words-input-screen',

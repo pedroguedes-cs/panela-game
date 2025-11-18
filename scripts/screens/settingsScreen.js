@@ -1,4 +1,5 @@
-import { GameEvents } from "../core/GameEvents.js";
+import { EVENTS } from "../core/Events.js";
+import { gameController, gameEvents } from "../main.js";
 
 
 /*=====[HTML ELEMENTS]=====*/
@@ -8,9 +9,10 @@ let wordsPerPlayerInput;
 let settingsContinueButton;
 
 /*=====[INIT]=====*/
-function initSettingsScreen()
+export function initSettingsScreen()
 {
     getElementsSettingsScreen();
+    addListenersSettingsScreen();
 }
 
 /*=====[SETUP]=====*/

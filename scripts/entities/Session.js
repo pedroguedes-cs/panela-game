@@ -1,14 +1,14 @@
-import { Screen } from "../core/Screen.js"
+import { SCREENS } from "../core/Screens.js"
 
 export class Session
 {
-    #screenId = Screen.HOME;
+    #screenId = SCREENS.HOME;
     #round = 0;
     #teamIndex = 0;
     #playerIndex = 0;
     #remainingTurnTime = 0;
 
-    constructor(screenId = Screen.HOME, round = 0, teamIndex = 0, playerIndex = 0, remainingTurnTime = 0)
+    constructor(screenId = SCREENS.HOME, round = 0, teamIndex = 0, playerIndex = 0, remainingTurnTime = 0)
     {
         this.#screenId = screenId;
         this.#round = Math.max(0, round);

@@ -1,7 +1,8 @@
 import { GAME_CONSTANTS } from "./GameConstants.js";
 import { GameState } from "./GameState.js";
-import { GameEvents } from "./GameEvents.js";
-import { Screen } from "./Screen.js";
+import { EVENTS } from "./Events.js";
+import { gameEvents } from "../main.js";
+import { SCREENS } from "./Screens.js";
 import { Player } from "../entities/Player.js";
 
 export class GameController
@@ -20,6 +21,7 @@ export class GameController
         const hasMaxTeamsData = teamsData.length >= GAME_CONSTANTS.MAX_TEAMS;
         const hasEnoughTeamsData = teamsData.length >= GAME_CONSTANTS.MIN_TEAMS;
 
+        const teamsWithMaxPlayersData = [];
         const invalidTeamsIndexData = [];
         
         teamsData.forEach((team, index) => {
@@ -30,12 +32,20 @@ export class GameController
             {
                 invalidTeamsIndexData.push(index);
             }
+
+            const hasMaxPlayers = team.length === GAME_CONSTANTS.MAX_PLAYERS_PER_TEAM;
+
+            if (hasMaxPlayers)
+            {
+                teamsWithMaxPlayersData.push(index);
+            }
         })
 
         return {
             teams: teamsData,
             hasMaxTeams: hasMaxTeamsData,
             hasEnoughTeams: hasEnoughTeamsData,
+            teamsWithMaxPlayers: teamsWithMaxPlayersData,
             invalidTeamsIndex: invalidTeamsIndexData
         }
 
@@ -47,14 +57,14 @@ export class GameController
         if (teams.length < GAME_CONSTANTS.MAX_TEAMS)
         {
             this.#gameState.addTeam();
-            GameEvents.dispatchEvent('teamsUpdated');
+            gameEvents.dispatchEvent(new Event(EVENTS.TEAMS_UPDATED));
             this.#gameState.saveGameState();
         }
     }
     tryDeleteTeam(teamIndex)
     {
         this.#gameState.deleteTeam(teamIndex);
-        GameEvents.dispatchEvent('teamsUpdated');
+        gameEvents.dispatchEvent(new Event(EVENTS.TEAMS_UPDATED));
         this.#gameState.saveGameState();
     }
     tryAddPlayer(teamIndex)
@@ -64,14 +74,14 @@ export class GameController
         if (teams[teamIndex].length < GAME_CONSTANTS.MAX_PLAYERS_PER_TEAM)
         {
             this.#gameState.addPlayer(teamIndex);
-            GameEvents.dispatchEvent('teamsUpdated');
+            gameEvents.dispatchEvent(new Event(EVENTS.TEAMS_UPDATED));
             this.#gameState.saveGameState();
         }    
     }
     tryDeletePlayer(teamIndex, playerIndex)
     {
         this.#gameState.deletePlayer(teamIndex, playerIndex);
-        GameEvents.dispatchEvent('teamsUpdated');
+        gameEvents.dispatchEvent(new Event(EVENTS.TEAMS_UPDATED));
         this.#gameState.saveGameState();
     }
     tryRenamePlayer(teamIndex, playerIndex, newName)
@@ -92,15 +102,15 @@ export class GameController
     }
     tryGoSettings()
     {
-        isValid = this.checkTeams();
+        const isValid = this.checkTeams();
 
         if (isValid)
         {
-            this.showScreen(Screen.SETTINGS);
+            this.showScreen(SCREENS.SETTINGS);
         }
         else
         {
-            GameEvents.dispatchEvent('invalidTeams');
+            gameEvents.dispatchEvent(new Event(EVENTS.INVALID_TEAMS));
         }
     }
 
@@ -122,18 +132,23 @@ export class GameController
     }
     tryGoBackHome()
     {
-        this.showScreen(Screen.HOME);
+        this.showScreen(SCREENS.HOME);
     }
     tryGoWordsInput()
     {
         this.#gameState.goToWordsInput();
-        this.showScreen(Screen.WORDS_INPUT);
+        this.showScreen(SCREENS.WORDS_INPUT);
     }
 
     /*=====[WORDS INPUT]=====*/
 
 
     /*=====[SCREEN MANAGER]=====*/
+    initScreen()
+    {
+        const screen = this.#gameState.getSessionCopy().screenId;
+        this.showScreen(screen);
+    }
     showScreen(screenId)
     {
         document.querySelectorAll('section:not(.section-hidden)').forEach((section) => {
@@ -145,6 +160,11 @@ export class GameController
         if (screen)
         {
             screen.classList.remove('section-hidden');
+            gameEvents.dispatchEvent(new CustomEvent(EVENTS.SHOW_SCREEN, {
+                detail: {
+                    screenId: screenId
+                }
+            }))
             this.#gameState.setScreenId(screenId);
             this.#gameState.saveGameState();
             return true;

@@ -14,7 +14,7 @@ let lightMode;
 let homeHowToPlayButton;
 
 /*=====[INIT]=====*/
-function initMenu()
+export function initMenu()
 {
     getElementsMenu();
     addListenersMenu();
@@ -51,7 +51,9 @@ function addListenersMenu()
     confirmNewGameButton.addEventListener('click', onNewGame);
     cancelNewGameButton.addEventListener('click', () => {toggleDescription(newGameButton)});
 
-    lightModeButton.addEventListener('click', toggleLightMode)
+    lightModeButton.addEventListener('click', toggleLightMode);
+
+    homeHowToPlayButton.addEventListener('click', onHomeHowToPlay);
 }
 function loadLightMode()
 {
@@ -67,6 +69,12 @@ function loadLightMode()
 function onNewGame()
 {
     // TODO: game controller
+    return;
+}
+function onHomeHowToPlay()
+{
+    toggleSidebar();
+    toggleDescription(howToPlayButton);
 }
 
 
