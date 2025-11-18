@@ -1,0 +1,9 @@
+#final-result-screen
+{
+    /*display: flex; [screenManager.css]*/ 
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 3rem;
+    border: blue solid 1rem;
+}
