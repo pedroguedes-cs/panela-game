@@ -9,8 +9,15 @@ export const gameEvents = new EventTarget();
 export const gameState = GameState.loadGameState();
 export const gameController = new GameController(gameState);
 
-initMenu();
-initHomeScreen();
-initSettingsScreen();
+console.log(document.getElementById('home-screen'));
 
-gameController.initScreen();
+
+window.addEventListener('DOMContentLoaded', () => {
+
+    initMenu();
+    initHomeScreen();
+    initSettingsScreen();
+
+    gameController.initScreen();
+
+})

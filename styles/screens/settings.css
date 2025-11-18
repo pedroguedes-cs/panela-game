@@ -72,6 +72,10 @@
 }
 
 /* INPUT */
+.settings-form
+{
+    display: contents;
+}
 .settings-screen-input-wrapper
 {
     width: 100%;
